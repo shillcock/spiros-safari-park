@@ -38,7 +38,7 @@ jobs:
             cp "$version"/{index.html,style.css,game.js,game-model.js} "_site/$version/"
             cp -R "$version/assets" "_site/$version/"
           done
-          cp v2/presentation.js _site/v2/
+          cp v2/presentation.js v2/walk-animation.js _site/v2/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

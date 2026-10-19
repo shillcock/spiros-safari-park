@@ -1,3 +1,5 @@
+import { walkFrame } from './walk-animation.js';
+
 // Enhanced-only presentation. None of these effects alter simulation or hitboxes.
 const COLORS = ['#e7b546', '#b56583', '#638eb6', '#91b754', '#8968a9', '#e28b51'];
 const approach = (from, to, amount) => from < to ? Math.min(to, from + amount) : Math.max(to, from - amount);
@@ -179,17 +181,27 @@ export class ParkRenderer {
     this.visual = new VisualState(reducedMotion);
     this.background = createBackground();
   }
-  reset() { this.visual.reset(); }
+  reset() { this.visual.reset(); this.playerWalking = false; }
   advance(game, seconds) { this.visual.advance(game, seconds); }
-  sprite(image, body, flip = false) {
+  sprite(image, body, flip = false, animation = null) {
     const c = this.ctx;
     c.save(); c.translate(Math.round(body.x + (flip ? body.w : 0)), Math.round(body.y));
     if (flip) c.scale(-1, 1);
-    c.drawImage(image, 0, 0, body.w, body.h); c.restore();
+    if (animation) {
+      const { sheet, sx, sy, sw, sh, dx, dy, dw, dh } = animation;
+      c.drawImage(sheet, sx, sy, sw, sh, dx, dy, dw, dh);
+    } else c.drawImage(image, 0, 0, body.w, body.h);
+    c.restore();
   }
-  animal(a) {
+  actor(name, body, flip, walking, phaseOffset = 0) {
+    const sheet = this.images[`${name}_walk`];
+    const frame = walking && !this.visual.reducedMotion && sheet
+      ? walkFrame(name, this.visual.time + phaseOffset) : null;
+    this.sprite(this.images[name], body, flip, frame ? { sheet, ...frame } : null);
+  }
+  animal(a, walking = false) {
     const reverse = a.name === 'monkey' || a.name === 'penguin';
-    this.sprite(this.images[a.name], a, reverse ? a.facing === 'left' : a.facing === 'right');
+    this.actor(a.name, a, reverse ? a.facing === 'left' : a.facing === 'right', walking, a.w / 100);
   }
   shadow(body) {
     const c = this.ctx; c.fillStyle = '#344d3424';
@@ -206,6 +218,7 @@ export class ParkRenderer {
   }
   draw(game, paused, moving) {
     const c = this.ctx, v = this.visual;
+    if (!paused) this.playerWalking = moving && !game.won;
     c.drawImage(this.background, 0, 0);
     for (const cage of game.cages) {
       c.fillStyle = '#8ca264'; c.fillRect(cage.x + 4, 483, 125, 112);
@@ -225,8 +238,17 @@ export class ParkRenderer {
           c.rotate(pose.angle * (body.facing === 'left' ? -1 : 1));
           this.sprite(this.images.guide, { ...body, x: -body.w / 2, y: -body.h / 2 }, body.facing === 'left');
           c.restore();
-        } else this.sprite(this.images.guide, body, body.facing === 'left');
-      } else this.animal(body);
+        } else this.actor('guide', body, body.facing === 'left', this.playerWalking);
+      } else {
+        // A returned animal's animated feet must stay inside its enclosure.
+        c.save();
+        if (body.cage !== null) {
+          const cage = game.cages[body.cage];
+          c.beginPath(); c.rect(cage.x, cage.y, cage.w, cage.h); c.clip();
+        }
+        this.animal(body, !game.won && Math.hypot(body.vx, body.vy) > .08);
+        c.restore();
+      }
     }
     for (let i = 0; i < game.cages.length; i++) this.cage(game.cages[i], i);
     for (const p of v.stars) {

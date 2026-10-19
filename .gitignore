@@ -17,3 +17,6 @@ test-results/
 
 # Generated GitHub Pages staging directory.
 /_site/
+
+# Keep future throwaway visual experiments out of the repository.
+/v2/prototype-*/

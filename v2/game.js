@@ -1,5 +1,6 @@
 import { Game, SPECIES, STEP } from './game-model.js';
 import { ParkRenderer } from './presentation.js';
+import { WALK_LAYOUTS, WALK_FRAMES } from './walk-animation.js';
 
 const canvas = document.querySelector('#game');
 const ctx = canvas.getContext('2d');
@@ -204,6 +205,19 @@ async function load() {
     img.src = asset(`${name}.png`);
     await img.decode();
     images[name] = img;
+  }));
+  await Promise.all(Object.entries(WALK_LAYOUTS).map(async ([name, layout]) => {
+    try {
+      const img = new Image();
+      img.src = asset(`animations/${name}-walk.png`);
+      await img.decode();
+      if (img.naturalWidth !== layout.width * WALK_FRAMES || img.naturalHeight !== layout.height) {
+        throw new Error(`Unexpected walk sheet dimensions: ${name}`);
+      }
+      images[`${name}_walk`] = img;
+    } catch (error) {
+      console.warn(`Using static artwork for ${name}.`, error);
+    }
   }));
   renderer = new ParkRenderer(ctx, images, window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   try {

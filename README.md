@@ -16,7 +16,8 @@ for switching back. There is no chooser or wrapper page.
 
 Original preserves the first working browser version. Enhanced adds a refreshed
 title and closing screens, textured park scenery, animated cage doors, consistent carrying,
-large completion stars, and smoother animal wandering with gentle fleeing.
+large completion stars, livelier walking animations, and smoother animal wandering
+with gentle fleeing.
 Return recordings play clearly before praise. The last gate closes and Spiro does
 a victory flip before the end screen, confetti, and animated ranger award. Reduced-motion preferences
 disable decorative animations. Original recordings and opening timings remain.
@@ -41,7 +42,7 @@ v1/                           Original: preserved first working browser game
   test/, package.json
 v2/                           Enhanced: independent copy; make improvements here
   index.html, style.css
-  game.js, game-model.js, presentation.js
+  game.js, game-model.js, presentation.js, walk-animation.js
   assets/, tools/
   test/, package.json
  test/                        Original snapshot checksum guard

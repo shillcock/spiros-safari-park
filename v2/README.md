@@ -14,6 +14,11 @@ Original edition or CD-ROM are needed.
   corner trees, and a sandy strip leading to the enclosures.
 - Two-leaf cage doors open on escape and close when each animal returns.
   A large, outlined gold star in the middle marks each successfully filled cage.
+- Spiro and all six animals use the selected livelier 12-frame walking cycles,
+  reusing the original photographic/crayon pixels. Spiro walks while moving;
+  animals animate while wandering, including inside cages. Idle, carried, and
+  reduced-motion sprites use the original still artwork. Pausing freezes frames.
+  The illustrated side/back experiments and other prototypes are not included.
 - Carried animals always render immediately behind the player, on the back
   side of their facing direction, with a small bob while moving. This affects
   only rendering, not collision geometry or pickup rules.
@@ -71,7 +76,10 @@ Opening/escape timing, player movement, pickup collisions, original recordings,
 and the six-animal goal are unchanged. Original retains all its old rules.
 
 `presentation.js` owns scenery, rendering, and visual state; `game.js` connects
-it to the existing game loop. Restart clears all visual state. The background
+it to the existing game loop. `walk-animation.js` defines the approved sheets'
+frame layout and timing; `assets/animations/` contains only their final PNGs.
+Animation padding is purely visual and does not change pickup/delivery geometry.
+Animal speeds are still randomly selected per animal, not species-specific. Restart clears all visual state. The background
 uses its own seeded generator and is drawn once, not rebuilt every frame.
 
 ## Title artwork
