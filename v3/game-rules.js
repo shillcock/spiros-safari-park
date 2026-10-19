@@ -1,0 +1,34 @@
+// Geometry-independent rules shared by the renderer and its tests.
+export const LASSO_RANGE = 5;
+export const SCATTER_SECONDS = 2.8;
+
+export function readOptions(search) {
+  const params = new URLSearchParams(search);
+  return { animalStyle: params.get('animals') === 'paper' ? 'paper' : 'toys',
+    catchMode: params.get('catch') === 'touch' ? 'touch' : 'lasso' };
+}
+
+export function optionsQuery(animalStyle, catchMode) {
+  return `?${new URLSearchParams({ animals: animalStyle, catch: catchMode })}`;
+}
+
+// Test the whole distance travelled this frame, not just the loop's final point.
+export function findLassoCatch(animals, from, to) {
+  const dx = to.x - from.x, dz = to.z - from.z, lengthSquared = dx * dx + dz * dz;
+  let first = null, firstAlong = Infinity;
+  for (const animal of animals) {
+    if (animal.state !== 'free') continue;
+    const p = animal.group.position;
+    const t = lengthSquared ? Math.max(0, Math.min(1, ((p.x - from.x) * dx + (p.z - from.z) * dz) / lengthSquared)) : 0;
+    const distance = Math.hypot(p.x - from.x - t * dx, p.z - from.z - t * dz);
+    if (distance < .85 && t < firstAlong) { first = animal; firstAlong = t; }
+  }
+  return first;
+}
+
+export function cameraFraming({ released, won, runTime, carrying, player, reducedMotion }) {
+  if (!released || won || runTime <= SCATTER_SECONDS || reducedMotion) return { x: 0, z: -.5, zoom: 1 };
+  if (carrying) return { x: player.x * .18, z: -1.2, zoom: 1.08 };
+  return { x: Math.max(-5, Math.min(5, player.x * .55)),
+    z: Math.max(-2, Math.min(3, player.z * .45)), zoom: 1.35 };
+}

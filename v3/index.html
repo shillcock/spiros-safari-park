@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spiro’s Safari Park — 3D</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="eyebrow">3D edition</p><h1>Spiro’s Safari Park</h1></div>
+    <nav class="edition-nav" aria-label="Game version">
+      <a href="../v1/">Play Original</a><a href="../v2/">Play Enhanced</a>
+    </nav>
+  </header>
+  <p class="intro">Six runaway animals. Six homes. One little safari ranger.</p>
+  <div class="toolbar" aria-label="Game controls">
+    <button id="release" disabled>Release the animals</button>
+    <button id="reset" disabled>Start over</button>
+    <button id="catch-mode" aria-pressed="true" aria-label="Use lasso instead of catching by hand">Catch: Lasso</button>
+    <button id="animals" aria-pressed="true" aria-label="Use 3D animals instead of paper animals">Animals: 3D</button>
+  </div>
+  <section id="viewport" aria-label="3D safari park">
+    <div id="loading" role="status">Building the little park…</div>
+    <div id="score">Six animals, six homes</div>
+    <button id="throw" disabled>Throw lasso (Space)</button>
+    <div id="victory" hidden><strong>You’re a Safari Park Ranger!</strong><span>All six animals are home safe.</span><button id="again">Play again</button></div>
+  </section>
+  <p id="status" role="status">Loading the park…</p>
+  <p class="instructions"><strong>Arrow keys / WASD</strong> to walk, or <strong>click/tap the ground</strong>.
+    <span id="catch-help"><strong>Space</strong> throws along the gold arrow—move to aim it.</span>
+    Carry each animal into its named cage. Read the signs to find the right home!</p>
+  <footer>Original game idea, drawings, and sound effects by Spiro JJ Pettas, age 7.</footer>
+</main>
+<script type="module" src="game.js"></script>
+</body>
+</html>
