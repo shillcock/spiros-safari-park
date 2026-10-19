@@ -14,6 +14,7 @@ const images = {};
 const keys = new Set();
 let game, renderer, screen = 'loading', paused = false, accumulator = 0, lastTime = 0;
 let audio, master, musicGain, music, muted = false, generation = 0, deliveryAudio = false;
+let effectGeneration = 0;
 const buffers = new Map();
 const effects = new Set();
 
@@ -27,6 +28,7 @@ function play(name, finished) {
   source.start();
 }
 function stopEffects() {
+  effectGeneration++;
   for (const source of effects) { source.onended = null; source.stop(); }
   effects.clear();
   deliveryAudio = false;
@@ -36,13 +38,21 @@ function stopAudio() {
   stopEffects();
   if (music) { music.stop(); music = null; }
 }
+function playPickup(name) {
+  if (deliveryAudio) return; // Let the previous successful return finish clearly.
+  stopEffects();
+  const current = effectGeneration;
+  play('gotcha', () => {
+    if (current === effectGeneration) play(name);
+  });
+}
 function playReturn(name) {
   stopEffects();
   deliveryAudio = true;
-  const current = generation;
+  const current = effectGeneration;
   play(name, () => {
-    if (current !== generation) return;
-    play('good_job', () => { if (current === generation) deliveryAudio = false; });
+    if (current !== effectGeneration) return;
+    play('good_job', () => { if (current === effectGeneration) deliveryAudio = false; });
   });
 }
 function startMusic() {
@@ -150,7 +160,9 @@ function frame(now) {
           stopEffects();
           play(event);
         } else if (event.startsWith('returned:')) playReturn(event.slice('returned:'.length));
-        else if (!deliveryAudio) play(event);
+        else if (SPECIES.includes(event)) playPickup(event);
+        // The model emits both species and gotcha; playPickup sequences the pair.
+        else if (event !== 'gotcha' && !deliveryAudio) play(event);
       }
       accumulator -= STEP;
     }
