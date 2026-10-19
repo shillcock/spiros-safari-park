@@ -25,6 +25,9 @@ Original edition or CD-ROM are needed.
   only rendering, not collision geometry or pickup rules.
 - No destination arrows or hints: players must read the cage names.
   A successful delivery gives a brief gold border and star burst.
+- Pickup plays `gotcha.wav` first, then the species recording, never both at once.
+  A cage attempt or restart cancels any remaining pickup sequence. Pickups during
+  a protected return recording/praise are skipped, not queued for later.
 - On return, the species recording plays again, followed by `good_job.wav`.
   Existing effects stop first; pickup effects do not interrupt this sequence.
   Background music continues. A new return or wrong-cage attempt can interrupt it.
@@ -69,8 +72,21 @@ rather than perfect evasion. Steering eases velocity by 10% per tick when far
 away, rising to 16% nearby for a more noticeable turn. Boundaries turn them
 back into the field.
 
-Free-animal speeds are 2.2–3.4 pixels per 30 Hz tick, always below Spiro's 5;
-fleeing never boosts speed. Caged animals wander at 30% speed and do not flee.
+Each species has a fixed speed across games (pixels per 30 Hz tick):
+
+| Species | Speed | Approx. pixels/second |
+| --- | ---: | ---: |
+| Elephant | 2.0 | 60 |
+| Penguin | 2.2 | 66 |
+| Beaver | 2.5 | 75 |
+| Monkey | 2.8 | 84 |
+| Zebra | 3.1 | 93 |
+| Snake | 3.4 | 102 |
+
+All remain below Spiro's 5 (150 px/s); fleeing never boosts speed. Steering
+acceleration and direction changes can reduce actual travel speed. Caged animals
+wander at 30% of their species speed and do not flee. Walk animations remain at
+12 fps; their timing is not coupled to travel speed.
 Carried animals continue to follow the player instead of steering.
 
 Opening/escape timing, player movement, pickup collisions, original recordings,
@@ -80,7 +96,7 @@ and the six-animal goal are unchanged. Original retains all its old rules.
 it to the existing game loop. `walk-animation.js` defines the approved sheets'
 frame layout and timing; `assets/animations/` contains only their final PNGs.
 Animation padding is purely visual and does not change pickup/delivery geometry.
-Animal speeds are still randomly selected per animal, not species-specific. Restart clears all visual state. The background
+Species speeds are defined in `game-model.js`. Restart clears all visual state. The background
 uses its own seeded generator and is drawn once, not rebuilt every frame.
 
 ## Title artwork
@@ -125,4 +141,6 @@ node v2/tools/check-finish.mjs
 
 Set `BROWSER_EXECUTABLE` to use an installed Chrome, `PLAYWRIGHT_MODULE` to a
 Playwright module path/URL outside this repo, or `GAME_URL` for another server.
+`tools/check-pickup-audio.mjs` uses the same overrides and checks pickup ordering,
+cancellation on return/wrong cage/restart, and protection of return narration.
 The game itself still has no runtime package dependencies.

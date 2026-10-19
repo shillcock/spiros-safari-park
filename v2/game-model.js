@@ -1,6 +1,10 @@
 export const SPECIES = ['beaver', 'elephant', 'monkey', 'penguin', 'snake', 'zebra'];
 export const SIZES = [[66, 100], [100, 74], [84, 100], [72, 100], [46, 100], [100, 65]];
 export const STEP = 1000 / 30;
+// Pixels per 30 Hz tick. Even the quickest animal stays below Spiro's 5.
+export const ANIMAL_SPEEDS = Object.freeze({
+  elephant: 2, penguin: 2.2, beaver: 2.5, monkey: 2.8, zebra: 3.1, snake: 3.4,
+});
 const overlaps = (a, b) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 const clamp = (a, r) => {
   a.x = Math.max(r.x, Math.min(a.x, r.x + r.w - a.w));
@@ -56,7 +60,7 @@ export class Game {
       x: i * 133 + (133 - SIZES[i][0]) / 2, y: 480 + (120 - SIZES[i][1]) / 2,
       cage: i, carried: false, facing: 'left',
       count: this.integer(45, 95), heading: this.random() * Math.PI * 2,
-      speed: 2.2 + this.random() * 1.2, vx: 0, vy: 0,
+      speed: ANIMAL_SPEEDS[name], vx: 0, vy: 0,
     }));
   }
   integer(min, max) { return min + Math.floor(this.random() * (max - min + 1)); }

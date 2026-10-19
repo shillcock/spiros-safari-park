@@ -17,8 +17,8 @@ for switching back. There is no chooser or wrapper page.
 Original preserves the first working browser version. Enhanced adds a refreshed
 title and closing screens, textured park scenery, animated cage doors, consistent carrying,
 large completion stars, livelier walking animations, and smoother animal wandering
-with gentle fleeing.
-Return recordings play clearly before praise. The last gate closes and Spiro does
+with gentle fleeing and species-specific speeds. Pickup plays “gotcha” before
+the animal recording; return recordings play clearly before praise. The last gate closes and Spiro does
 a victory flip before the end screen, confetti, and animated ranger award. Reduced-motion preferences
 disable decorative animations. Original recordings and opening timings remain.
 

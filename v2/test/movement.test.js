@@ -1,12 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Game, moveAnimal } from '../game-model.js';
+import { Game, moveAnimal, ANIMAL_SPEEDS } from '../game-model.js';
 
 function animal() {
   return { x: 350, y: 220, w: 60, h: 80, heading: -Math.PI / 2,
     vx: 0, vy: 0, speed: 3, cage: null, facing: 'left' };
 }
 const distantPlayer = { x: 0, y: 0, w: 64, h: 144 };
+
+test('species speeds are predictable across games and all remain catchable', () => {
+  const slowRandom = new Game(() => 0), fastRandom = new Game(() => .999);
+  for (const game of [slowRandom, fastRandom]) {
+    for (const a of game.animals) {
+      assert.equal(a.speed, ANIMAL_SPEEDS[a.name]);
+      assert.ok(a.speed > 0 && a.speed < 5);
+    }
+  }
+  const order = ['elephant', 'penguin', 'beaver', 'monkey', 'zebra', 'snake'];
+  for (let i = 1; i < order.length; i++) assert.ok(ANIMAL_SPEEDS[order[i - 1]] < ANIMAL_SPEEDS[order[i]]);
+});
 
 test('nearby player gently biases heading away; distant player has no effect', () => {
   const near = animal(), far = animal();
