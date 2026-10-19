@@ -1,9 +1,9 @@
 # Approved walk cycles
 
-The selected direction is **livelier motion for all seven characters**.
+The selected direction is **gentler motion for Spiro, livelier motion for all six animals**.
 
-- `guide-walk.png`: Spiro's photographic cutout, articulated around shoulders,
-  hips, and knees, with a small body bob. This is not a new side-view drawing.
+- `guide-walk.png`: Spiro's gentler B photographic cutout cycle, articulated
+  around shoulders, hips, and knees, with a small body bob. This is not a new side-view drawing.
 - Species sheets: continuous deformations of each original crayon drawing,
   emphasizing legs, trunks, tails, flippers, or slithering as appropriate.
 

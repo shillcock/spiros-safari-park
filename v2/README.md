@@ -14,8 +14,9 @@ Original edition or CD-ROM are needed.
   corner trees, and a sandy strip leading to the enclosures.
 - Two-leaf cage doors open on escape and close when each animal returns.
   A large, outlined gold star in the middle marks each successfully filled cage.
-- Spiro and all six animals use the selected livelier 12-frame walking cycles,
-  reusing the original photographic/crayon pixels. Spiro walks while moving;
+- Spiro uses the gentler B walking cycle; all six animals keep the livelier
+  cycles. Each has 12 frames reusing the original photographic/crayon pixels.
+  Spiro walks while moving;
   animals animate while wandering, including inside cages. Idle, carried, and
   reduced-motion sprites use the original still artwork. Pausing freezes frames.
   The illustrated side/back experiments and other prototypes are not included.
