@@ -28,6 +28,9 @@ try {
           clickTarget = new THREE.Vector3(cage.x, 0, -5.08);
         },
         step(n) { for (let i=0;i<n;i++) update(.05); },
+        layout() { return cages.map(c => ({ name: c.name, x: c.x, signX: c.sign.position.x,
+          groupX: c.group.position.x, starX: c.star.position.x,
+          animalX: animals.find(a => a.name === c.name).group.position.x })); },
         state() { return { carrying: carrying?.name ?? null, lasso: lasso?.phase ?? null,
           states: animals.map(a => a.state), won, catchMode, animalStyle,
           camera: camera.type, zoom: followZoom, toys: animals[0].toy.root.visible,
@@ -40,6 +43,13 @@ try {
     assert.equal(await page.locator('button[aria-pressed]').count(), 2);
     assert.equal(await page.locator('#state, #zoom, #carry, #previous, #next, #camera-mode').count(), 0);
     assert.equal(new URL(page.url()).searchParams.has('variant'), false);
+    const layout = await page.evaluate(() => gameCheck.layout());
+    assert.equal(new Set(layout.map(c => c.name)).size, 6);
+    layout.forEach((c, i) => {
+      assert.equal(c.x, -10 + i * 4);
+      assert.equal(c.signX, c.x); assert.equal(c.groupX, c.x);
+      assert.equal(c.starX, c.x); assert.equal(c.animalX, c.x);
+    });
     await page.click('#release');
     for (const name of ['beaver', 'elephant', 'monkey', 'penguin', 'snake', 'zebra']) {
       await page.evaluate(n => gameCheck.prepare(n), name);
@@ -63,11 +73,16 @@ try {
     await page.evaluate(() => gameCheck.step(30));
     assert.equal((await page.evaluate(() => gameCheck.state())).won, true);
     assert.equal(await page.locator('#victory').isVisible(), true);
+    assert.deepEqual((await page.evaluate(() => gameCheck.layout())).map(c => c.name), layout.map(c => c.name), 'cages stay fixed during a round');
+    // Force a non-identity shuffle to verify replay really repositions cages.
+    await page.evaluate(() => { window.savedRandom = Math.random; Math.random = () => 0; });
     await page.click('#again');
+    await page.evaluate(() => { Math.random = window.savedRandom; });
+    assert.notDeepEqual((await page.evaluate(() => gameCheck.layout())).map(c => c.name), layout.map(c => c.name));
     assert.equal((await page.evaluate(() => gameCheck.state())).won, false);
     await page.click('#reset');
     assert.deepEqual((await page.evaluate(() => gameCheck.state())).states, Array(6).fill('locked'));
-    console.log(`PASS: ${style}/${mode} — six pickups/returns, wrong cage, victory, replay, reset`);
+    console.log(`PASS: ${style}/${mode}: six pickups/returns, wrong cage, victory, replay, shuffled cages`);
   }
   // Switch catch method while an animal is still reeling in; don't strand it.
   await page.click('#catch-mode'); // final combination was touch

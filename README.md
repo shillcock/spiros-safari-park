@@ -27,6 +27,10 @@ In Enhanced, walk downward from the field into a cage to attempt delivery;
 sideways sliding does not count. Step back up before trying again.
 Return all six to win. P / Escape pauses; toolbar buttons mute and restart.
 
+Enhanced and 3D shuffle the cage order at the start of every new game, including
+replays. Cages stay in place for the round, so players must read the names instead
+of memorizing locations. Original keeps its fixed layout.
+
 The 3D edition is a separate wooden park with a fixed perspective camera and
 gentle automatic zoom. Its two options are **Lasso / By hand** catching and
 **3D / Paper** animals. Space throws along a visible aiming arrow; arrows/WASD

@@ -1,7 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readOptions, optionsQuery, findLassoCatch, cameraFraming } from '../game-rules.js';
+import { readOptions, optionsQuery, findLassoCatch, cameraFraming, shuffled } from '../game-rules.js';
 const animal = (x, z, state = 'free') => ({ state, group: { position: { x, z } } });
+
+test('cage shuffle is a permutation and preserves cage object identities', () => {
+  const cages = ['beaver', 'elephant', 'monkey', 'penguin', 'snake', 'zebra'].map(name => ({ name }));
+  const result = shuffled(cages, () => 0);
+  assert.notDeepEqual(result, cages);
+  assert.equal(new Set(result).size, 6);
+  assert.ok(result.every(cage => cages.includes(cage)));
+  assert.equal(cages[0].name, 'beaver');
+  assert.deepEqual(shuffled(cages, () => .999), cages);
+});
 
 test('only the two supported options are parsed and serialized', () => {
   assert.deepEqual(readOptions('?variant=A&camera=manual&zoom=3'), { animalStyle: 'toys', catchMode: 'lasso' });

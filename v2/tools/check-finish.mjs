@@ -32,9 +32,9 @@ try {
     await page.evaluate(() => {
       const g = window.testGame;
       g.time = 24000; g.escaped = true;
-      g.animals.forEach((a, i) => { a.cage = i === 5 ? null : i; a.carried = i === 5; a.speed = 0; a.count = 1000; });
+      g.animals.forEach((a, i) => { a.cage = i === 5 ? null : g.cages.findIndex(c => c.name === a.name); a.carried = i === 5; a.speed = 0; a.count = 1000; });
       g.player.carrying = g.animals[5];
-      Object.assign(g.player, { x: 690, y: 336 });
+      Object.assign(g.player, { x: g.cages.find(c => c.name === 'zebra').x + 25, y: 336 });
     });
     await page.clock.runFor(1000);
     await page.keyboard.down('ArrowDown'); await page.clock.runFor(100); await page.keyboard.up('ArrowDown');

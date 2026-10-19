@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Game, STEP } from '../game-model.js';
+import { Game, STEP, SPECIES, shuffled } from '../game-model.js';
 
 function ready() {
-  const game = new Game(() => 0.5);
+  // Identity shuffle for the legacy movement/delivery fixtures below.
+  const game = new Game(() => 0.999);
   game.time = 23001;
   game.escaped = true;
   game.animals.forEach((a, i) => {
@@ -12,6 +13,28 @@ function ready() {
   });
   return game;
 }
+
+test('cages shuffle without changing animal identities or starting homes', () => {
+  const original = [...SPECIES];
+  const g = new Game(() => 0);
+  assert.notDeepEqual(g.cages.map(c => c.name), SPECIES);
+  assert.deepEqual([...g.cages.map(c => c.name)].sort(), [...SPECIES].sort());
+  assert.deepEqual(SPECIES, original);
+  assert.deepEqual(shuffled(SPECIES, () => .999), SPECIES);
+  for (const a of g.animals) {
+    const cage = g.cages[a.cage];
+    assert.equal(cage.name, a.name);
+    assert.ok(a.x >= cage.x && a.x + a.w <= cage.x + cage.w);
+  }
+  const order = g.cages.map(c => c.name);
+  for (let i = 0; i < 750; i++) g.step();
+  assert.deepEqual(g.cages.map(c => c.name), order, 'order stays fixed throughout the round');
+  const a = g.animals[0], target = g.cages.findIndex(c => c.name === a.name);
+  a.carried = true; g.player.carrying = a;
+  Object.assign(g.player, { x: g.cages[target].x + 20, y: 336 });
+  assert.ok(g.step(new Set(['down'])).includes(`returned:${a.name}`));
+  assert.equal(a.cage, target);
+});
 
 test('starts with six animals in matching cages, and a centered player', () => {
   const g = new Game();

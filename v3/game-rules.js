@@ -2,6 +2,15 @@
 export const LASSO_RANGE = 5;
 export const SCATTER_SECONDS = 2.8;
 
+export function shuffled(items, random = Math.random) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export function readOptions(search) {
   const params = new URLSearchParams(search);
   return { animalStyle: params.get('animals') === 'paper' ? 'paper' : 'toys',

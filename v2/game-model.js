@@ -47,6 +47,15 @@ export function moveAnimal(animal, player, bounds = field) {
   if (Math.abs(animal.vx) > .2) animal.facing = animal.vx < 0 ? 'left' : 'right';
 }
 
+export function shuffled(items, random = Math.random) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 export class Game {
   constructor(random = Math.random) {
     this.random = random;
@@ -54,14 +63,17 @@ export class Game {
     this.escaped = false;
     this.won = false;
     this.player = { x: 368, y: 0, w: 64, h: 144, facing: 'left', carrying: null };
-    this.cages = SPECIES.map((name, i) => ({ name, x: i * 133, y: 480, w: 133, h: 120 }));
-    this.animals = SPECIES.map((name, i) => ({
-      name, w: SIZES[i][0], h: SIZES[i][1],
-      x: i * 133 + (133 - SIZES[i][0]) / 2, y: 480 + (120 - SIZES[i][1]) / 2,
-      cage: i, carried: false, facing: 'left',
-      count: this.integer(45, 95), heading: this.random() * Math.PI * 2,
-      speed: ANIMAL_SPEEDS[name], vx: 0, vy: 0,
-    }));
+    this.cages = shuffled(SPECIES, this.random).map((name, i) => ({ name, x: i * 133, y: 480, w: 133, h: 120 }));
+    this.animals = SPECIES.map((name, i) => {
+      const cage = this.cages.findIndex(c => c.name === name);
+      return {
+        name, w: SIZES[i][0], h: SIZES[i][1],
+        x: this.cages[cage].x + (133 - SIZES[i][0]) / 2, y: 480 + (120 - SIZES[i][1]) / 2,
+        cage, carried: false, facing: 'left',
+        count: this.integer(45, 95), heading: this.random() * Math.PI * 2,
+        speed: ANIMAL_SPEEDS[name], vx: 0, vy: 0,
+      };
+    });
   }
   integer(min, max) { return min + Math.floor(this.random() * (max - min + 1)); }
   get score() { return this.escaped ? this.animals.filter(a => a.cage !== null).length : 0; }

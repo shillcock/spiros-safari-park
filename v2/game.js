@@ -93,7 +93,7 @@ function togglePause() {
   pauseButton.textContent = paused ? 'Resume' : 'Pause';
   if (paused) {
     audio?.suspend().catch(() => {});
-    showOverlay('Paused — click or press P to resume');
+    showOverlay('Paused. Click or press P to resume');
   } else {
     audio?.resume().catch(() => {});
     overlay.hidden = true;
@@ -133,11 +133,11 @@ function updateStatus() {
   let text;
   if (screen === 'won') text = 'All six animals are home. You’re a Safari Park Ranger!';
   else if (screen === 'title') text = 'Press any key or click to visit the park. Sound starts when you play.';
-  else if (paused) text = 'Paused — the animals can wait.';
+  else if (paused) text = 'Paused. The animals can wait.';
   else if (screen === 'finishing') text = 'All six animals are home! Time for Spiro’s victory jump!';
   else if (game?.phase === 'intro') text = 'Welcome! Explore with the arrow keys while you hear the introduction.';
   else if (game?.phase === 'escape') text = 'The animals have escaped! Get ready to round them up…';
-  else if (game) text = `${game.score} / 6 home · ${game.player.carrying ? `Carrying the ${game.player.carrying.name} — find its cage!` : 'Touch an animal to pick it up.'}`;
+  else if (game) text = `${game.score} / 6 home · ${game.player.carrying ? `Carrying the ${game.player.carrying.name}. Find its cage!` : 'Touch an animal to pick it up.'}`;
   if (text && status.textContent !== text) status.textContent = text;
 }
 function render() {

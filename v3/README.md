@@ -1,12 +1,12 @@
-# Spiro’s Safari Park — 3D edition
+# Spiro’s Safari Park: 3D edition
 
 A standalone, playable third edition. The accepted design uses the perspective
 camera (prototype C), automatic chase/carry framing, rear-mounted cage signs,
 and the wooden park. Only two gameplay options remain:
 
-- **Catch: Lasso / By hand** — Space throws in the last movement direction; the
+- **Catch: Lasso / By hand**: Space throws in the last movement direction; the
   gold ground arrow shows range and aim. Or walk up to animals to pick them up.
-- **Animals: 3D / Paper** — handmade 3D interpretations or original animated
+- **Animals: 3D / Paper**: handmade 3D interpretations or original animated
   cutouts. Spiro stays the original paper/photo character in both modes.
 
 Settings are kept in the URL (`?animals=paper&catch=touch`) and can be changed
@@ -21,6 +21,10 @@ Or serve this directory by itself using its own `npm start` command.
 No build, runtime CDN, npm dependencies, or references into V1/V2 are required.
 Version-navigation links expect sibling directories, but the game does not.
 A current WebGL-capable browser is required.
+
+Cage order is shuffled on each new game or restart and stays fixed for the round.
+Names, gates, stars, and the animals’ starting homes move together. Read the signs
+rather than memorizing where an animal belongs.
 
 Click **Release the animals**, then give them a moment to scatter. Arrow keys /
 WASD or click/tap the ground to walk. Space or the on-screen Throw button casts a

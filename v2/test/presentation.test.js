@@ -108,10 +108,11 @@ test('confetti starts only on victory, ends, and replay clears every effect', ()
 
 test('last gate closes before the flip, then Spiro lands before the end screen', () => {
   const g = new Game(), v = new VisualState();
-  g.escaped = true; g.animals[5].cage = null;
+  const animal = g.animals.find(a => a.cage === 5);
+  g.escaped = true; animal.cage = null;
   v.advance(g, 1);
   assert.equal(v.doors[5], 1);
-  g.animals[5].cage = 5; g.won = true;
+  animal.cage = 5; g.won = true;
   v.advance(g, .1);
   assert.equal(v.finishPhase, 'closing');
   assert.ok(v.doors[5] > 0);

@@ -2,7 +2,7 @@
 // The only game options are catching method and animal artwork.
 import * as THREE from './vendor/three.module.js';
 import { createToyAnimal } from './toy-animals.js';
-import { readOptions, optionsQuery, findLassoCatch, cameraFraming, LASSO_RANGE, SCATTER_SECONDS } from './game-rules.js';
+import { readOptions, optionsQuery, findLassoCatch, cameraFraming, shuffled, LASSO_RANGE, SCATTER_SECONDS } from './game-rules.js';
 
 const SPECIES = [
   { name: 'beaver', w: 66, h: 100, height: 2.1, speed: 1.85 },
@@ -175,7 +175,7 @@ function buildCage(species, x, wood, darkWood) {
   sign.position.set(x, 2.35, -8.32);
   const star = new THREE.Sprite(new THREE.SpriteMaterial({ map: starMap }));
   star.position.set(x, 1.05, -4.77); star.scale.set(.55, .55, 1); star.visible = false; scene.add(star);
-  return { name: species.name, x, z: -6.7, open: 0, target: 0, doors, star };
+  return { name: species.name, x, z: -6.7, open: 0, target: 0, doors, star, group, sign };
 }
 async function createActor(config) {
   const [still, walk] = await Promise.all([
@@ -258,7 +258,16 @@ function reset() {
   stopSound(); winTime = 0;
   document.querySelector('#victory').hidden = true;
   player.group.position.set(0, 0, 4.5); player.moving = false;
-  animals.forEach((a, i) => { a.state = 'locked'; a.group.position.set(cages[i].x, 0, cages[i].z); a.moving = false; a.vx = a.vz = 0; });
+  cages = shuffled(cages);
+  cages.forEach((cage, i) => {
+    cage.x = -10 + i * 4;
+    cage.group.position.x = cage.sign.position.x = cage.star.position.x = cage.x;
+  });
+  animals.forEach(a => {
+    const cage = cages.find(c => c.name === a.name);
+    a.state = 'locked'; a.group.position.set(cage.x, 0, cage.z);
+    a.moving = false; a.vx = a.vz = 0;
+  });
   cages.forEach(c => { c.target = 0; c.open = 0; c.star.visible = false; });
   document.querySelector('#release').disabled = false;
   document.querySelector('#score').textContent = 'Six animals, six homes';
@@ -267,8 +276,9 @@ function reset() {
 function release() {
   if (released) return;
   released = true; runTime = 0;
-  animals.forEach((a, i) => {
-    a.state = 'free'; a.group.position.set(cages[i].x, 0, -4.35);
+  animals.forEach(a => {
+    const cage = cages.find(c => c.name === a.name);
+    a.state = 'free'; a.group.position.set(cage.x, 0, -4.35);
     a.heading = Math.PI / 2 + (random() - .5) * .8; a.turn = 1.6; a.vx = 0; a.vz = a.speed;
   });
   cages.forEach(c => { c.target = 1; });
@@ -289,8 +299,8 @@ function throwLasso() {
   if (!released) { setStatus('Click Release the animals first, then press Space to throw.', 2); return; }
   if (won) return;
   if (catchMode !== 'lasso') { setStatus('Switch Catch to Lasso to throw, or touch an animal in Touch mode.', 2); return; }
-  if (carrying) { setStatus('You’re already carrying an animal—take it home first.', 2); return; }
-  if (runTime < SCATTER_SECONDS) { setStatus('Let them scatter for a moment—then your lasso is ready!', SCATTER_SECONDS - runTime); return; }
+  if (carrying) { setStatus('You’re already carrying an animal. Take it home first.', 2); return; }
+  if (runTime < SCATTER_SECONDS) { setStatus('Let them scatter for a moment, then your lasso is ready!', SCATTER_SECONDS - runTime); return; }
   if (lasso) return;
   lasso = { origin: player.group.position.clone(), direction: facing.clone(), distance: 0, phase: 'out', animal: null, time: 0 };
   setStatus('Let’s see who we can catch!', 1);
@@ -540,7 +550,7 @@ function updateCatchMode() {
   document.querySelector('#catch-mode').setAttribute('aria-pressed', String(catchMode === 'lasso'));
   document.querySelector('#throw').hidden = catchMode !== 'lasso';
   document.querySelector('#catch-help').textContent = catchMode === 'lasso'
-    ? 'Space throws along the gold arrow—move to aim it.' : 'Walk up to an animal to pick it up by hand.';
+    ? 'Space throws along the gold arrow. Move to aim it.' : 'Walk up to an animal to pick it up by hand.';
   saveOptions();
 }
 document.querySelector('#catch-mode').onclick = () => {
