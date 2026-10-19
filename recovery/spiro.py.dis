@@ -1,0 +1,3275 @@
+# pydisasm version 6.1.8
+# Python bytecode 2.3 (62021)
+# Disassembled from Python 3.11.15 (main, Jun 23 2026, 15:46:51) [Clang 22.1.3 ]
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        6
+# Flags:             0x00000040 (NOFREE)
+# First Line:        3
+# Constants:
+#    0: None
+#    1: ('*',)
+#    2: 0
+#    3: 800
+#    4: 600
+#    5: 120
+#    6: 110
+#    7: 1
+#    8: 2
+#    9: 3
+#   10: 4
+#   11: 6
+#   12: <Code2 code object load_image at 0x106552c10, file spiro.pyw>, line 25
+#   13: <Code2 code object load_images at 0x106553310, file spiro.pyw>, line 39
+#   14: <Code2 code object load_sounds at 0x106553f90, file spiro.pyw>, line 47
+#   15: <Code2 code object get_sound at 0x106558090, file spiro.pyw>, line 62
+#   16: <Code2 code object render_cage_text at 0x1065508d0, file spiro.pyw>, line 74
+#   17: 'Guide'
+#   18: <Code2 code object Guide at 0x106558f90, file spiro.pyw>, line 89
+#   19: 'Animal'
+#   20: <Code2 code object Animal at 0x106552610, file spiro.pyw>, line 135
+#   21: 'Cage'
+#   22: <Code2 code object Cage at 0x106561310, file spiro.pyw>, line 197
+#   23: 'CageName'
+#   24: <Code2 code object CageName at 0x106561b90, file spiro.pyw>, line 243
+#   25: <Code2 code object main at 0x106552410, file spiro.pyw>, line 251
+#   26: '__main__'
+# Names:
+#    0: random
+#    1: sys
+#    2: os
+#    3: pygame
+#    4: pygame.locals
+#    5: path
+#    6: dirname
+#    7: abspath
+#    8: argv
+#    9: chdir
+#   10: Rect
+#   11: SCREENRECT
+#   12: width
+#   13: height
+#   14: GRASSRECT
+#   15: GUIDERECT
+#   16: DIR_NONE
+#   17: DIR_UP
+#   18: DIR_DOWN
+#   19: DIR_LEFT
+#   20: DIR_RIGHT
+#   21: MAX_SCORE
+#   22: load_image
+#   23: load_images
+#   24: sound_dict
+#   25: load_sounds
+#   26: get_sound
+#   27: render_cage_text
+#   28: sprite
+#   29: Sprite
+#   30: Guide
+#   31: Animal
+#   32: Cage
+#   33: CageName
+#   34: main
+#   35: __name__
+#   36: FULLSCREEN
+# Varnames:
+#	load_images, random, CageName, DIR_DOWN, Animal, render_cage_text, load_image, DIR_UP, pygame, DIR_RIGHT, main, Cage, sound_dict, sys, path, DIR_LEFT, MAX_SCORE, Guide, GRASSRECT, load_sounds, os, DIR_NONE, get_sound, GUIDERECT, SCREENRECT
+# Local variables:
+#    0: load_images
+#    1: random
+#    2: CageName
+#    3: DIR_DOWN
+#    4: Animal
+#    5: render_cage_text
+#    6: load_image
+#    7: DIR_UP
+#    8: pygame
+#    9: DIR_RIGHT
+#   10: main
+#   11: Cage
+#   12: sound_dict
+#   13: sys
+#   14: path
+#   15: DIR_LEFT
+#   16: MAX_SCORE
+#   17: Guide
+#   18: GRASSRECT
+#   19: load_sounds
+#   20: os
+#   21: DIR_NONE
+#   22: get_sound
+#   23: GUIDERECT
+#   24: SCREENRECT
+  3:           0 LOAD_CONST           (None)
+               3 IMPORT_NAME          (random)
+               6 STORE_NAME           (random)
+               9 LOAD_CONST           (None)
+              12 IMPORT_NAME          (sys)
+              15 STORE_NAME           (sys)
+              18 LOAD_CONST           (None)
+              21 IMPORT_NAME          (os)
+              24 STORE_NAME           (os)
+
+  6:          27 LOAD_CONST           (None)
+              30 IMPORT_NAME          (pygame)
+              33 STORE_NAME           (pygame)
+
+  7:          36 LOAD_CONST           (('*',))
+              39 IMPORT_NAME          (pygame.locals)
+              42 IMPORT_STAR
+
+  9:          43 LOAD_NAME            (os)
+              46 LOAD_ATTR            (path)
+              49 LOAD_ATTR            (dirname)
+              52 LOAD_NAME            (os)
+              55 LOAD_ATTR            (path)
+              58 LOAD_ATTR            (abspath)
+              61 LOAD_NAME            (sys)
+              64 LOAD_ATTR            (argv)
+              67 LOAD_CONST           (0)
+              70 BINARY_SUBSCR
+              71 CALL_FUNCTION        (1 positional, 0 named)
+              74 CALL_FUNCTION        (1 positional, 0 named)
+              77 STORE_NAME           (path)
+
+ 10:          80 LOAD_NAME            (os)
+              83 LOAD_ATTR            (chdir)
+              86 LOAD_NAME            (path)
+              89 CALL_FUNCTION        (1 positional, 0 named)
+              92 POP_TOP
+
+ 13:          93 LOAD_NAME            (Rect)
+              96 LOAD_CONST           (0)
+              99 LOAD_CONST           (0)
+             102 LOAD_CONST           (800)
+             105 LOAD_CONST           (600)
+             108 CALL_FUNCTION        (4 positional, 0 named)
+             111 STORE_NAME           (SCREENRECT)
+
+ 14:         114 LOAD_NAME            (Rect)
+             117 LOAD_CONST           (0)
+             120 LOAD_CONST           (0)
+             123 LOAD_NAME            (SCREENRECT)
+             126 LOAD_ATTR            (width)
+             129 LOAD_NAME            (SCREENRECT)
+             132 LOAD_ATTR            (height)
+             135 LOAD_CONST           (120)
+             138 BINARY_SUBTRACT
+             139 CALL_FUNCTION        (4 positional, 0 named)
+             142 STORE_NAME           (GRASSRECT)
+
+ 15:         145 LOAD_NAME            (Rect)
+             148 LOAD_CONST           (0)
+             151 LOAD_CONST           (0)
+             154 LOAD_NAME            (SCREENRECT)
+             157 LOAD_ATTR            (width)
+             160 LOAD_NAME            (SCREENRECT)
+             163 LOAD_ATTR            (height)
+             166 LOAD_CONST           (110)
+             169 BINARY_SUBTRACT
+             170 CALL_FUNCTION        (4 positional, 0 named)
+             173 STORE_NAME           (GUIDERECT)
+
+ 17:         176 LOAD_CONST           (0)
+             179 STORE_NAME           (DIR_NONE)
+
+ 18:         182 LOAD_CONST           (1)
+             185 STORE_NAME           (DIR_UP)
+
+ 19:         188 LOAD_CONST           (2)
+             191 STORE_NAME           (DIR_DOWN)
+
+ 20:         194 LOAD_CONST           (3)
+             197 STORE_NAME           (DIR_LEFT)
+
+ 21:         200 LOAD_CONST           (4)
+             203 STORE_NAME           (DIR_RIGHT)
+
+ 23:         206 LOAD_CONST           (6)
+             209 STORE_NAME           (MAX_SCORE)
+
+ 25:         212 LOAD_CONST           (<Code2 code object load_image at 0x106552c10, file spiro.pyw>, line 25)
+             215 MAKE_FUNCTION        (0 default parameters)
+             218 STORE_NAME           (load_image)
+
+ 39:         221 LOAD_CONST           (<Code2 code object load_images at 0x106553310, file spiro.pyw>, line 39)
+             224 MAKE_FUNCTION        (0 default parameters)
+             227 STORE_NAME           (load_images)
+
+ 45:         230 BUILD_MAP            0
+             233 STORE_NAME           (sound_dict)
+
+ 47:         236 LOAD_CONST           (<Code2 code object load_sounds at 0x106553f90, file spiro.pyw>, line 47)
+             239 MAKE_FUNCTION        (0 default parameters)
+             242 STORE_NAME           (load_sounds)
+
+ 62:         245 LOAD_CONST           (<Code2 code object get_sound at 0x106558090, file spiro.pyw>, line 62)
+             248 MAKE_FUNCTION        (0 default parameters)
+             251 STORE_NAME           (get_sound)
+
+ 74:         254 LOAD_CONST           (<Code2 code object render_cage_text at 0x1065508d0, file spiro.pyw>, line 74)
+             257 MAKE_FUNCTION        (0 default parameters)
+             260 STORE_NAME           (render_cage_text)
+
+ 89:         263 LOAD_CONST           ("Guide")
+             266 LOAD_NAME            (pygame)
+             269 LOAD_ATTR            (sprite)
+             272 LOAD_ATTR            (Sprite)
+             275 BUILD_TUPLE          1
+             278 LOAD_CONST           (<Code2 code object Guide at 0x106558f90, file spiro.pyw>, line 89)
+             281 MAKE_FUNCTION        (0 default parameters)
+             284 CALL_FUNCTION        (0 positional, 0 named)
+             287 BUILD_CLASS
+             288 STORE_NAME           (Guide)
+
+135:         291 LOAD_CONST           ("Animal")
+             294 LOAD_NAME            (pygame)
+             297 LOAD_ATTR            (sprite)
+             300 LOAD_ATTR            (Sprite)
+             303 BUILD_TUPLE          1
+             306 LOAD_CONST           (<Code2 code object Animal at 0x106552610, file spiro.pyw>, line 135)
+             309 MAKE_FUNCTION        (0 default parameters)
+             312 CALL_FUNCTION        (0 positional, 0 named)
+             315 BUILD_CLASS
+             316 STORE_NAME           (Animal)
+
+197:         319 LOAD_CONST           ("Cage")
+             322 LOAD_NAME            (pygame)
+             325 LOAD_ATTR            (sprite)
+             328 LOAD_ATTR            (Sprite)
+             331 BUILD_TUPLE          1
+             334 LOAD_CONST           (<Code2 code object Cage at 0x106561310, file spiro.pyw>, line 197)
+             337 MAKE_FUNCTION        (0 default parameters)
+             340 CALL_FUNCTION        (0 positional, 0 named)
+             343 BUILD_CLASS
+             344 STORE_NAME           (Cage)
+
+243:         347 LOAD_CONST           ("CageName")
+             350 LOAD_NAME            (pygame)
+             353 LOAD_ATTR            (sprite)
+             356 LOAD_ATTR            (Sprite)
+             359 BUILD_TUPLE          1
+             362 LOAD_CONST           (<Code2 code object CageName at 0x106561b90, file spiro.pyw>, line 243)
+             365 MAKE_FUNCTION        (0 default parameters)
+             368 CALL_FUNCTION        (0 positional, 0 named)
+             371 BUILD_CLASS
+             372 STORE_NAME           (CageName)
+
+251:         375 LOAD_CONST           (0)
+             378 LOAD_CONST           (<Code2 code object main at 0x106552410, file spiro.pyw>, line 251)
+             381 MAKE_FUNCTION        (1 default parameters)
+             384 STORE_NAME           (main)
+
+201:         387 LOAD_NAME            (__name__)
+             390 LOAD_CONST           ("__main__")
+             393 COMPARE_OP           (==)
+             396 JUMP_IF_FALSE        (to 413)
+             399 POP_TOP
+
+201:         400 LOAD_NAME            (main)
+             403 LOAD_NAME            (FULLSCREEN)
+             406 CALL_FUNCTION        (1 positional, 0 named)
+             409 POP_TOP
+             410 JUMP_FORWARD         (to 414)
+         >>  413 POP_TOP
+         >>  414 LOAD_CONST           (None)
+             417 RETURN_VALUE
+
+
+# Method Name:       load_image
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  4
+# Stack size:        5
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        25
+# Constants:
+#    0: ' Load image and return image object'
+#    1: 'data'
+#    2: 'Cannot load image:'
+#    3: None
+# Names:
+#    0: os
+#    1: path
+#    2: join
+#    3: name
+#    4: fullname
+#    5: pygame
+#    6: image
+#    7: load
+#    8: get_alpha
+#    9: None
+#   10: convert
+#   11: convert_alpha
+#   12: error
+#   13: message
+#   14: SystemExit
+# Varnames:
+#	name, image, fullname, message
+# Positional arguments:
+#	name
+# Local variables:
+#    1: image
+#    2: fullname
+#    3: message
+ 27:           0 LOAD_GLOBAL          (os)
+               3 LOAD_ATTR            (path)
+               6 LOAD_ATTR            (join)
+               9 LOAD_CONST           ("data")
+              12 LOAD_FAST            (name)
+              15 CALL_FUNCTION        (2 positional, 0 named)
+              18 STORE_FAST           (fullname)
+
+ 28:          21 SETUP_EXCEPT         (to 93)
+
+ 29:          24 LOAD_GLOBAL          (pygame)
+              27 LOAD_ATTR            (image)
+              30 LOAD_ATTR            (load)
+              33 LOAD_FAST            (fullname)
+              36 CALL_FUNCTION        (1 positional, 0 named)
+              39 STORE_FAST           (image)
+
+ 30:          42 LOAD_FAST            (image)
+              45 LOAD_ATTR            (get_alpha)
+              48 CALL_FUNCTION        (0 positional, 0 named)
+              51 LOAD_GLOBAL          (None)
+              54 COMPARE_OP           (is)
+              57 JUMP_IF_FALSE        (to 76)
+              60 POP_TOP
+
+ 31:          61 LOAD_FAST            (image)
+              64 LOAD_ATTR            (convert)
+              67 CALL_FUNCTION        (0 positional, 0 named)
+              70 STORE_FAST           (image)
+              73 JUMP_FORWARD         (to 89)
+         >>   76 POP_TOP
+
+ 33:          77 LOAD_FAST            (image)
+              80 LOAD_ATTR            (convert_alpha)
+              83 CALL_FUNCTION        (0 positional, 0 named)
+              86 STORE_FAST           (image)
+         >>   89 POP_BLOCK
+              90 JUMP_FORWARD         (to 135)
+
+ 34:     >>   93 DUP_TOP
+              94 LOAD_GLOBAL          (pygame)
+              97 LOAD_ATTR            (error)
+             100 COMPARE_OP           (exception-match)
+             103 JUMP_IF_FALSE        (to 133)
+             106 POP_TOP
+             107 POP_TOP
+             108 STORE_FAST           (message)
+             111 POP_TOP
+
+ 35:         112 LOAD_CONST           ("Cannot load image:")
+             115 PRINT_ITEM
+             116 LOAD_FAST            (fullname)
+             119 PRINT_ITEM
+             120 PRINT_NEWLINE
+
+ 36:         121 LOAD_GLOBAL          (SystemExit)
+             124 LOAD_FAST            (message)
+             127 RAISE_VARARGS        (exception, parameter)
+             130 JUMP_FORWARD         (to 135)
+         >>  133 POP_TOP
+             134 END_FINALLY
+
+ 37:     >>  135 LOAD_FAST            (image)
+             138 RETURN_VALUE
+             139 LOAD_CONST           (None)
+             142 RETURN_VALUE
+
+
+# Method Name:       load_images
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  3
+# Stack size:        4
+# Flags:             0x00000047 (NOFREE | VARARGS | NEWLOCALS | OPTIMIZED)
+# First Line:        39
+# Constants:
+#    0: None
+# Names:
+#    0: imgs
+#    1: files
+#    2: file
+#    3: append
+#    4: load_image
+# Varnames:
+#	files, imgs, file
+# Local variables:
+#    0: files
+#    1: imgs
+#    2: file
+ 40:           0 BUILD_LIST           0
+               3 STORE_FAST           (imgs)
+
+ 41:           6 SETUP_LOOP           (to 42)
+               9 LOAD_FAST            (files)
+              12 GET_ITER
+
+ 41:     >>   13 FOR_ITER             (to 41)
+              16 STORE_FAST           (file)
+
+ 42:          19 LOAD_FAST            (imgs)
+              22 LOAD_ATTR            (append)
+              25 LOAD_GLOBAL          (load_image)
+              28 LOAD_FAST            (file)
+              31 CALL_FUNCTION        (1 positional, 0 named)
+              34 CALL_FUNCTION        (1 positional, 0 named)
+              37 POP_TOP
+              38 JUMP_ABSOLUTE        (to 13)
+         >>   41 POP_BLOCK
+
+ 43:     >>   42 LOAD_FAST            (imgs)
+              45 RETURN_VALUE
+              46 LOAD_CONST           (None)
+              49 RETURN_VALUE
+
+
+# Method Name:       load_sounds
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  4
+# Stack size:        5
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        47
+# Constants:
+#    0: 'loads all wav files in the data directory'
+#    1: 'no mixer'
+#    2: None
+#    3: 'data'
+#    4: '.wav'
+# Names:
+#    0: pygame
+#    1: mixer
+#    2: os
+#    3: listdir
+#    4: files
+#    5: file
+#    6: path
+#    7: splitext
+#    8: sound_name
+#    9: ext
+#   10: Sound
+#   11: join
+#   12: sound_dict
+# Varnames:
+#	files, ext, file, sound_name
+# Local variables:
+#    0: files
+#    1: ext
+#    2: file
+#    3: sound_name
+ 49:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (mixer)
+               6 UNARY_NOT
+               7 JUMP_IF_FALSE        (to 23)
+              10 POP_TOP
+
+ 50:          11 LOAD_CONST           ("no mixer")
+              14 PRINT_ITEM
+              15 PRINT_NEWLINE
+
+ 51:          16 LOAD_CONST           (None)
+              19 RETURN_VALUE
+              20 JUMP_FORWARD         (to 24)
+         >>   23 POP_TOP
+
+ 53:     >>   24 LOAD_GLOBAL          (os)
+              27 LOAD_ATTR            (listdir)
+              30 LOAD_CONST           ("data")
+              33 CALL_FUNCTION        (1 positional, 0 named)
+              36 STORE_FAST           (files)
+
+ 55:          39 SETUP_LOOP           (to 134)
+              42 LOAD_FAST            (files)
+              45 GET_ITER
+
+ 55:     >>   46 FOR_ITER             (to 133)
+              49 STORE_FAST           (file)
+
+ 56:          52 LOAD_GLOBAL          (os)
+              55 LOAD_ATTR            (path)
+              58 LOAD_ATTR            (splitext)
+              61 LOAD_FAST            (file)
+              64 CALL_FUNCTION        (1 positional, 0 named)
+              67 UNPACK_SEQUENCE      2
+              70 STORE_FAST           (sound_name)
+              73 STORE_FAST           (ext)
+
+ 57:          76 LOAD_FAST            (ext)
+              79 LOAD_CONST           (".wav")
+              82 COMPARE_OP           (==)
+              85 JUMP_IF_FALSE        (to 129)
+              88 POP_TOP
+
+ 58:          89 LOAD_GLOBAL          (pygame)
+              92 LOAD_ATTR            (mixer)
+              95 LOAD_ATTR            (Sound)
+              98 LOAD_GLOBAL          (os)
+             101 LOAD_ATTR            (path)
+             104 LOAD_ATTR            (join)
+             107 LOAD_CONST           ("data")
+             110 LOAD_FAST            (file)
+             113 CALL_FUNCTION        (2 positional, 0 named)
+             116 CALL_FUNCTION        (1 positional, 0 named)
+             119 LOAD_GLOBAL          (sound_dict)
+             122 LOAD_FAST            (sound_name)
+             125 STORE_SUBSCR
+             126 JUMP_ABSOLUTE        (to 46)
+         >>  129 POP_TOP
+             130 JUMP_ABSOLUTE        (to 46)
+         >>  133 POP_BLOCK
+         >>  134 LOAD_CONST           (None)
+             137 RETURN_VALUE
+
+
+# Method Name:       get_sound
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  2
+# Stack size:        3
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        62
+# Constants:
+#    0: None
+#    1: 'dummy_sound'
+#    2: <Code2 code object dummy_sound at 0x106558190, file spiro.pyw>, line 63
+#    3: 'unable to play sound "%s"'
+# Names:
+#    0: dummy_sound
+#    1: sound_name
+#    2: sound_dict
+# Varnames:
+#	sound_name, dummy_sound
+# Positional arguments:
+#	sound_name
+# Local variables:
+#    1: dummy_sound
+ 63:           0 LOAD_CONST           ("dummy_sound")
+               3 BUILD_TUPLE          0
+               6 LOAD_CONST           (<Code2 code object dummy_sound at 0x106558190, file spiro.pyw>, line 63)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 CALL_FUNCTION        (0 positional, 0 named)
+              15 BUILD_CLASS
+              16 STORE_FAST           (dummy_sound)
+
+ 67:          19 LOAD_FAST            (sound_name)
+              22 LOAD_GLOBAL          (sound_dict)
+              25 COMPARE_OP           (in)
+              28 JUMP_IF_FALSE        (to 43)
+              31 POP_TOP
+
+ 68:          32 LOAD_GLOBAL          (sound_dict)
+              35 LOAD_FAST            (sound_name)
+              38 BINARY_SUBSCR
+              39 RETURN_VALUE
+              40 JUMP_FORWARD         (to 60)
+         >>   43 POP_TOP
+
+ 70:          44 LOAD_CONST           ('unable to play sound "%s"')
+              47 LOAD_FAST            (sound_name)
+              50 BINARY_MODULO
+              51 PRINT_ITEM
+              52 PRINT_NEWLINE
+
+ 71:          53 LOAD_FAST            (dummy_sound)
+              56 CALL_FUNCTION        (0 positional, 0 named)
+              59 RETURN_VALUE
+         >>   60 LOAD_CONST           (None)
+              63 RETURN_VALUE
+
+
+# Method Name:       render_cage_text
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  7
+# Stack size:        6
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        74
+# Constants:
+#    0: None
+#    1: 0
+#    2: 'data/ariblk.ttf'
+#    3: 24
+#    4: 1
+#    5: 255
+# Names:
+#    0: pygame
+#    1: Surface
+#    2: size
+#    3: surf
+#    4: get_rect
+#    5: rect
+#    6: fill
+#    7: font
+#    8: Font
+#    9: render
+#   10: name
+#   11: text
+#   12: textpos
+#   13: centerx
+#   14: centery
+#   15: blit
+# Varnames:
+#	size, name, surf, text, textpos, font, rect
+# Positional arguments:
+#	size, name
+# Local variables:
+#    2: surf
+#    3: text
+#    4: textpos
+#    5: font
+#    6: rect
+ 75:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (Surface)
+               6 LOAD_FAST            (size)
+               9 CALL_FUNCTION        (1 positional, 0 named)
+              12 STORE_FAST           (surf)
+
+ 76:          15 LOAD_FAST            (surf)
+              18 LOAD_ATTR            (get_rect)
+              21 CALL_FUNCTION        (0 positional, 0 named)
+              24 STORE_FAST           (rect)
+
+ 77:          27 LOAD_FAST            (surf)
+              30 LOAD_ATTR            (fill)
+              33 LOAD_CONST           (0)
+              36 LOAD_CONST           (0)
+              39 LOAD_CONST           (0)
+              42 BUILD_TUPLE          3
+              45 CALL_FUNCTION        (1 positional, 0 named)
+              48 POP_TOP
+
+ 78:          49 LOAD_GLOBAL          (pygame)
+              52 LOAD_ATTR            (font)
+              55 JUMP_IF_FALSE        (to 165)
+              58 POP_TOP
+
+ 80:          59 LOAD_GLOBAL          (pygame)
+              62 LOAD_ATTR            (font)
+              65 LOAD_ATTR            (Font)
+              68 LOAD_CONST           ("data/ariblk.ttf")
+              71 LOAD_CONST           (24)
+              74 CALL_FUNCTION        (2 positional, 0 named)
+              77 STORE_FAST           (font)
+
+ 81:          80 LOAD_FAST            (font)
+              83 LOAD_ATTR            (render)
+              86 LOAD_FAST            (name)
+              89 LOAD_CONST           (1)
+              92 LOAD_CONST           (255)
+              95 LOAD_CONST           (255)
+              98 LOAD_CONST           (255)
+             101 BUILD_TUPLE          3
+             104 CALL_FUNCTION        (3 positional, 0 named)
+             107 STORE_FAST           (text)
+
+ 82:         110 LOAD_FAST            (text)
+             113 LOAD_ATTR            (get_rect)
+             116 CALL_FUNCTION        (0 positional, 0 named)
+             119 STORE_FAST           (textpos)
+
+ 83:         122 LOAD_FAST            (rect)
+             125 LOAD_ATTR            (centerx)
+             128 LOAD_FAST            (textpos)
+             131 STORE_ATTR           (centerx)
+
+ 84:         134 LOAD_FAST            (rect)
+             137 LOAD_ATTR            (centery)
+             140 LOAD_FAST            (textpos)
+             143 STORE_ATTR           (centery)
+
+ 85:         146 LOAD_FAST            (surf)
+             149 LOAD_ATTR            (blit)
+             152 LOAD_FAST            (text)
+             155 LOAD_FAST            (textpos)
+             158 CALL_FUNCTION        (2 positional, 0 named)
+             161 POP_TOP
+             162 JUMP_FORWARD         (to 166)
+         >>  165 POP_TOP
+
+ 86:     >>  166 LOAD_FAST            (surf)
+             169 LOAD_FAST            (rect)
+             172 BUILD_TUPLE          2
+             175 RETURN_VALUE
+             176 LOAD_CONST           (None)
+             179 RETURN_VALUE
+
+
+# Method Name:       Guide
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        89
+# Constants:
+#    0: None
+#    1: <Code2 code object __init__ at 0x106559010, file spiro.pyw>, line 90
+#    2: <Code2 code object move at 0x106559790, file spiro.pyw>, line 103
+#    3: <Code2 code object grabAnimal at 0x106559c90, file spiro.pyw>, line 117
+#    4: <Code2 code object lockupAnimal at 0x10655a090, file spiro.pyw>, line 128
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: __init__
+#    3: move
+#    4: grabAnimal
+#    5: lockupAnimal
+ 89:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+ 90:           6 LOAD_CONST           (<Code2 code object __init__ at 0x106559010, file spiro.pyw>, line 90)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 STORE_NAME           (__init__)
+
+103:          15 LOAD_CONST           (<Code2 code object move at 0x106559790, file spiro.pyw>, line 103)
+              18 MAKE_FUNCTION        (0 default parameters)
+              21 STORE_NAME           (move)
+
+117:          24 LOAD_CONST           (<Code2 code object grabAnimal at 0x106559c90, file spiro.pyw>, line 117)
+              27 MAKE_FUNCTION        (0 default parameters)
+              30 STORE_NAME           (grabAnimal)
+
+128:          33 LOAD_CONST           (<Code2 code object lockupAnimal at 0x10655a090, file spiro.pyw>, line 128)
+              36 MAKE_FUNCTION        (0 default parameters)
+              39 STORE_NAME           (lockupAnimal)
+              42 LOAD_LOCALS
+              43 RETURN_VALUE
+
+
+# Method Name:       Animal
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        135
+# Constants:
+#    0: None
+#    1: <Code2 code object __init__ at 0x106552790, file spiro.pyw>, line 136
+#    2: <Code2 code object place at 0x10655b050, file spiro.pyw>, line 153
+#    3: <Code2 code object move at 0x10655b3d0, file spiro.pyw>, line 157
+#    4: <Code2 code object follow at 0x10655bb90, file spiro.pyw>, line 179
+#    5: <Code2 code object lockup at 0x10655bf90, file spiro.pyw>, line 189
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: __init__
+#    3: place
+#    4: move
+#    5: follow
+#    6: lockup
+135:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+136:           6 LOAD_CONST           (<Code2 code object __init__ at 0x106552790, file spiro.pyw>, line 136)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 STORE_NAME           (__init__)
+
+153:          15 LOAD_CONST           (<Code2 code object place at 0x10655b050, file spiro.pyw>, line 153)
+              18 MAKE_FUNCTION        (0 default parameters)
+              21 STORE_NAME           (place)
+
+157:          24 LOAD_CONST           (<Code2 code object move at 0x10655b3d0, file spiro.pyw>, line 157)
+              27 MAKE_FUNCTION        (0 default parameters)
+              30 STORE_NAME           (move)
+
+179:          33 LOAD_CONST           (<Code2 code object follow at 0x10655bb90, file spiro.pyw>, line 179)
+              36 MAKE_FUNCTION        (0 default parameters)
+              39 STORE_NAME           (follow)
+
+189:          42 LOAD_CONST           (<Code2 code object lockup at 0x10655bf90, file spiro.pyw>, line 189)
+              45 MAKE_FUNCTION        (0 default parameters)
+              48 STORE_NAME           (lockup)
+              51 LOAD_LOCALS
+              52 RETURN_VALUE
+
+
+# Method Name:       Cage
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        197
+# Constants:
+#    0: None
+#    1: <Code2 code object __init__ at 0x106550610, file spiro.pyw>, line 198
+#    2: <Code2 code object lockup at 0x106560e10, file spiro.pyw>, line 211
+#    3: <Code2 code object unlock at 0x106561410, file spiro.pyw>, line 230
+#    4: <Code2 code object hasCorrectAnimal at 0x106551790, file spiro.pyw>, line 236
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: __init__
+#    3: lockup
+#    4: unlock
+#    5: hasCorrectAnimal
+197:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+198:           6 LOAD_CONST           (<Code2 code object __init__ at 0x106550610, file spiro.pyw>, line 198)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 STORE_NAME           (__init__)
+
+211:          15 LOAD_CONST           (<Code2 code object lockup at 0x106560e10, file spiro.pyw>, line 211)
+              18 MAKE_FUNCTION        (0 default parameters)
+              21 STORE_NAME           (lockup)
+
+230:          24 LOAD_CONST           (<Code2 code object unlock at 0x106561410, file spiro.pyw>, line 230)
+              27 MAKE_FUNCTION        (0 default parameters)
+              30 STORE_NAME           (unlock)
+
+236:          33 LOAD_CONST           (<Code2 code object hasCorrectAnimal at 0x106551790, file spiro.pyw>, line 236)
+              36 MAKE_FUNCTION        (0 default parameters)
+              39 STORE_NAME           (hasCorrectAnimal)
+              42 LOAD_LOCALS
+              43 RETURN_VALUE
+
+
+# Method Name:       CageName
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        243
+# Constants:
+#    0: None
+#    1: <Code2 code object __init__ at 0x106551d90, file spiro.pyw>, line 244
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: __init__
+243:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+244:           6 LOAD_CONST           (<Code2 code object __init__ at 0x106551d90, file spiro.pyw>, line 244)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 STORE_NAME           (__init__)
+              15 LOAD_LOCALS
+              16 RETURN_VALUE
+
+
+# Method Name:       main
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  47
+# Stack size:        6
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        251
+# Constants:
+#    0: None
+#    1: 'Warning, no sound'
+#    2: 32
+#    3: "Spiro's Safari Park"
+#    4: 'welcome.png'
+#    5: 'way_to_go.png'
+#    6: 0
+#    7: 'data'
+#    8: 'house_lo.wav'
+#    9: -1
+#   10: 0.75
+#   11: 0.25
+#   12: 52
+#   13: 106
+#   14: 16
+#   15: 'beaver'
+#   16: 'elephant'
+#   17: 'monkey'
+#   18: 1
+#   19: 'penguin'
+#   20: 'snake'
+#   21: 'zebra'
+#   22: 2
+#   23: 3
+#   24: 4
+#   25: 5
+#   26: 'intro'
+#   27: 30
+#   28: 16000
+#   29: 'escaped'
+#   30: 23000
+#   31: 'youre_a_ranger'
+#   32: 'ending'
+#   33: 1000
+#   34: 1100
+# Names:
+#    0: pygame
+#    1: init
+#    2: mouse
+#    3: set_visible
+#    4: False
+#    5: mixer
+#    6: get_init
+#    7: None
+#    8: display
+#    9: mode_ok
+#   10: SCREENRECT
+#   11: size
+#   12: winstyle
+#   13: bestdepth
+#   14: set_mode
+#   15: screen
+#   16: set_caption
+#   17: load_image
+#   18: welcome_image
+#   19: way_to_go_image
+#   20: blit
+#   21: flip
+#   22: load_sounds
+#   23: os
+#   24: path
+#   25: join
+#   26: music
+#   27: load
+#   28: play
+#   29: set_volume
+#   30: done
+#   31: event
+#   32: get
+#   33: type
+#   34: QUIT
+#   35: KEYDOWN
+#   36: True
+#   37: Surface
+#   38: get_size
+#   39: background
+#   40: convert
+#   41: fill
+#   42: sprite
+#   43: Group
+#   44: animalGroup
+#   45: cageGroup
+#   46: cageNameGroup
+#   47: RenderUpdates
+#   48: allGroup
+#   49: Animal
+#   50: containers
+#   51: Cage
+#   52: CageName
+#   53: Guide
+#   54: time
+#   55: Clock
+#   56: clock
+#   57: guide
+#   58: beaver
+#   59: elephant
+#   60: monkey
+#   61: left
+#   62: right
+#   63: penguin
+#   64: snake
+#   65: zebra
+#   66: animalList
+#   67: beaverCage
+#   68: beaverCageText
+#   69: elephantCage
+#   70: elephantCageText
+#   71: monkeyCage
+#   72: monkeyCageText
+#   73: penguinCage
+#   74: penguinCageText
+#   75: snakeCage
+#   76: snakeCageText
+#   77: zebraCage
+#   78: zebraCageText
+#   79: cageList
+#   80: get_sound
+#   81: sound
+#   82: lockup
+#   83: tick
+#   84: totalTime
+#   85: lockupTime
+#   86: locked
+#   87: score
+#   88: pump
+#   89: get_time
+#   90: unlock
+#   91: key
+#   92: K_ESCAPE
+#   93: get_pressed
+#   94: keystate
+#   95: clear
+#   96: update
+#   97: DIR_NONE
+#   98: direction
+#   99: K_UP
+#  100: DIR_UP
+#  101: K_DOWN
+#  102: DIR_DOWN
+#  103: K_LEFT
+#  104: DIR_LEFT
+#  105: K_RIGHT
+#  106: DIR_RIGHT
+#  107: move
+#  108: animal
+#  109: spritecollide
+#  110: theAnimal
+#  111: grabAnimal
+#  112: theCage
+#  113: lockupAnimal
+#  114: hasCorrectAnimal
+#  115: MAX_SCORE
+#  116: draw
+#  117: dirty
+#  118: get_busy
+#  119: x
+#  120: fadeout
+#  121: wait
+# Varnames:
+#	winstyle, zebraCage, beaverCageText, snakeCage, zebraCageText, cageNameGroup, direction, welcome_image, cageGroup, done, zebra, beaver, event, monkey, clock, animalList, music, animal, way_to_go_image, monkeyCageText, elephantCageText, totalTime, monkeyCage, elephantCage, snakeCageText, locked, screen, elephant, score, penguinCageText, snake, background, bestdepth, penguinCage, theAnimal, penguin, sound, theCage, allGroup, x, beaverCage, cageList, dirty, keystate, animalGroup, lockupTime, guide
+# Positional arguments:
+#	winstyle
+# Local variables:
+#    1: zebraCage
+#    2: beaverCageText
+#    3: snakeCage
+#    4: zebraCageText
+#    5: cageNameGroup
+#    6: direction
+#    7: welcome_image
+#    8: cageGroup
+#    9: done
+#   10: zebra
+#   11: beaver
+#   12: event
+#   13: monkey
+#   14: clock
+#   15: animalList
+#   16: music
+#   17: animal
+#   18: way_to_go_image
+#   19: monkeyCageText
+#   20: elephantCageText
+#   21: totalTime
+#   22: monkeyCage
+#   23: elephantCage
+#   24: snakeCageText
+#   25: locked
+#   26: screen
+#   27: elephant
+#   28: score
+#   29: penguinCageText
+#   30: snake
+#   31: background
+#   32: bestdepth
+#   33: penguinCage
+#   34: theAnimal
+#   35: penguin
+#   36: sound
+#   37: theCage
+#   38: allGroup
+#   39: x
+#   40: beaverCage
+#   41: cageList
+#   42: dirty
+#   43: keystate
+#   44: animalGroup
+#   45: lockupTime
+#   46: guide
+254:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (init)
+         >>    6 CALL_FUNCTION        (0 positional, 0 named)
+               9 POP_TOP
+
+255:          10 LOAD_GLOBAL          (pygame)
+              13 LOAD_ATTR            (mouse)
+              16 LOAD_ATTR            (set_visible)
+              19 LOAD_GLOBAL          (False)
+              22 CALL_FUNCTION        (1 positional, 0 named)
+              25 POP_TOP
+
+257:          26 LOAD_GLOBAL          (pygame)
+              29 LOAD_ATTR            (mixer)
+              32 JUMP_IF_FALSE        (to 49)
+              35 POP_TOP
+              36 LOAD_GLOBAL          (pygame)
+              39 LOAD_ATTR            (mixer)
+              42 LOAD_ATTR            (get_init)
+              45 CALL_FUNCTION        (0 positional, 0 named)
+              48 UNARY_NOT
+         >>   49 JUMP_IF_FALSE        (to 70)
+         >>   52 POP_TOP
+
+258:          53 LOAD_CONST           ("Warning, no sound")
+              56 PRINT_ITEM
+              57 PRINT_NEWLINE
+
+259:          58 LOAD_GLOBAL          (None)
+              61 LOAD_GLOBAL          (pygame)
+              64 STORE_ATTR           (mixer)
+              67 JUMP_FORWARD         (to 71)
+         >>   70 POP_TOP
+
+262:     >>   71 LOAD_GLOBAL          (pygame)
+              74 LOAD_ATTR            (display)
+              77 LOAD_ATTR            (mode_ok)
+              80 LOAD_GLOBAL          (SCREENRECT)
+              83 LOAD_ATTR            (size)
+              86 LOAD_FAST            (winstyle)
+              89 LOAD_CONST           (32)
+              92 CALL_FUNCTION        (3 positional, 0 named)
+              95 STORE_FAST           (bestdepth)
+
+263:          98 LOAD_GLOBAL          (pygame)
+             101 LOAD_ATTR            (display)
+             104 LOAD_ATTR            (set_mode)
+             107 LOAD_GLOBAL          (SCREENRECT)
+             110 LOAD_ATTR            (size)
+             113 LOAD_FAST            (winstyle)
+             116 LOAD_FAST            (bestdepth)
+             119 CALL_FUNCTION        (3 positional, 0 named)
+             122 STORE_FAST           (screen)
+
+264:         125 LOAD_GLOBAL          (pygame)
+             128 LOAD_ATTR            (display)
+             131 LOAD_ATTR            (set_caption)
+             134 LOAD_CONST           ("Spiro's Safari Park")
+             137 CALL_FUNCTION        (1 positional, 0 named)
+             140 POP_TOP
+
+266:         141 LOAD_GLOBAL          (load_image)
+             144 LOAD_CONST           ("welcome.png")
+             147 CALL_FUNCTION        (1 positional, 0 named)
+             150 STORE_FAST           (welcome_image)
+
+267:         153 LOAD_GLOBAL          (load_image)
+             156 LOAD_CONST           ("way_to_go.png")
+             159 CALL_FUNCTION        (1 positional, 0 named)
+             162 STORE_FAST           (way_to_go_image)
+
+269:         165 LOAD_FAST            (screen)
+             168 LOAD_ATTR            (blit)
+             171 LOAD_FAST            (welcome_image)
+             174 LOAD_CONST           (0)
+             177 LOAD_CONST           (0)
+             180 BUILD_TUPLE          2
+             183 CALL_FUNCTION        (2 positional, 0 named)
+             186 POP_TOP
+
+270:         187 LOAD_GLOBAL          (pygame)
+             190 LOAD_ATTR            (display)
+             193 LOAD_ATTR            (flip)
+             196 CALL_FUNCTION        (0 positional, 0 named)
+             199 POP_TOP
+
+273:         200 LOAD_GLOBAL          (load_sounds)
+             203 CALL_FUNCTION        (0 positional, 0 named)
+             206 POP_TOP
+
+275:         207 LOAD_GLOBAL          (pygame)
+             210 LOAD_ATTR            (mixer)
+             213 JUMP_IF_FALSE        (to 298)
+             216 POP_TOP
+
+276:         217 LOAD_GLOBAL          (os)
+             220 LOAD_ATTR            (path)
+             223 LOAD_ATTR            (join)
+             226 LOAD_CONST           ("data")
+             229 LOAD_CONST           ("house_lo.wav")
+             232 CALL_FUNCTION        (2 positional, 0 named)
+             235 STORE_FAST           (music)
+
+277:         238 LOAD_GLOBAL          (pygame)
+         >>  241 LOAD_ATTR            (mixer)
+             244 LOAD_ATTR            (music)
+             247 LOAD_ATTR            (load)
+             250 LOAD_FAST            (music)
+             253 CALL_FUNCTION        (1 positional, 0 named)
+             256 POP_TOP
+
+278:         257 LOAD_GLOBAL          (pygame)
+             260 LOAD_ATTR            (mixer)
+             263 LOAD_ATTR            (music)
+             266 LOAD_ATTR            (play)
+             269 LOAD_CONST           (-1)
+             272 CALL_FUNCTION        (1 positional, 0 named)
+             275 POP_TOP
+
+279:         276 LOAD_GLOBAL          (pygame)
+             279 LOAD_ATTR            (mixer)
+             282 LOAD_ATTR            (music)
+             285 LOAD_ATTR            (set_volume)
+             288 LOAD_CONST           (0.75)
+             291 CALL_FUNCTION        (1 positional, 0 named)
+             294 POP_TOP
+             295 JUMP_FORWARD         (to 299)
+         >>  298 POP_TOP
+
+281:     >>  299 LOAD_GLOBAL          (False)
+             302 STORE_FAST           (done)
+
+282:         305 SETUP_LOOP           (to 389)
+
+282:         308 LOAD_FAST            (done)
+             311 UNARY_NOT
+             312 JUMP_IF_FALSE        (to 387)
+             315 POP_TOP
+
+283:         316 SETUP_LOOP           (to 384)
+             319 LOAD_GLOBAL          (pygame)
+             322 LOAD_ATTR            (event)
+             325 LOAD_ATTR            (get)
+             328 CALL_FUNCTION        (0 positional, 0 named)
+             331 GET_ITER
+
+283:         332 FOR_ITER             (to 383)
+             335 STORE_FAST           (event)
+
+284:         338 LOAD_FAST            (event)
+             341 LOAD_ATTR            (type)
+             344 LOAD_GLOBAL          (QUIT)
+             347 COMPARE_OP           (==)
+             350 JUMP_IF_TRUE         (to 366)
+             353 POP_TOP
+             354 LOAD_FAST            (event)
+             357 LOAD_ATTR            (type)
+             360 LOAD_GLOBAL          (KEYDOWN)
+             363 COMPARE_OP           (==)
+         >>  366 JUMP_IF_FALSE        (to 379)
+             369 POP_TOP
+
+285:         370 LOAD_GLOBAL          (True)
+             373 STORE_FAST           (done)
+             376 JUMP_ABSOLUTE        (to 332)
+         >>  379 POP_TOP
+             380 JUMP_ABSOLUTE        (to 332)
+         >>  383 POP_BLOCK
+         >>  384 JUMP_ABSOLUTE        (to 308)
+         >>  387 POP_TOP
+             388 POP_BLOCK
+
+287:     >>  389 LOAD_GLOBAL          (pygame)
+             392 LOAD_ATTR            (mixer)
+             395 LOAD_ATTR            (music)
+             398 LOAD_ATTR            (set_volume)
+             401 LOAD_CONST           (0.25)
+             404 CALL_FUNCTION        (1 positional, 0 named)
+             407 POP_TOP
+
+290:         408 LOAD_GLOBAL          (pygame)
+             411 LOAD_ATTR            (Surface)
+             414 LOAD_FAST            (screen)
+             417 LOAD_ATTR            (get_size)
+             420 CALL_FUNCTION        (0 positional, 0 named)
+             423 CALL_FUNCTION        (1 positional, 0 named)
+             426 STORE_FAST           (background)
+
+291:         429 LOAD_FAST            (background)
+             432 LOAD_ATTR            (convert)
+             435 CALL_FUNCTION        (0 positional, 0 named)
+             438 STORE_FAST           (background)
+
+292:         441 LOAD_FAST            (background)
+             444 LOAD_ATTR            (fill)
+             447 LOAD_CONST           (52)
+             450 LOAD_CONST           (106)
+             453 LOAD_CONST           (16)
+             456 BUILD_TUPLE          3
+             459 CALL_FUNCTION        (1 positional, 0 named)
+             462 POP_TOP
+
+293:         463 LOAD_FAST            (screen)
+             466 LOAD_ATTR            (blit)
+             469 LOAD_FAST            (background)
+             472 LOAD_CONST           (0)
+             475 LOAD_CONST           (0)
+             478 BUILD_TUPLE          2
+             481 CALL_FUNCTION        (2 positional, 0 named)
+             484 POP_TOP
+
+294:         485 LOAD_GLOBAL          (pygame)
+             488 LOAD_ATTR            (display)
+             491 LOAD_ATTR            (flip)
+             494 CALL_FUNCTION        (0 positional, 0 named)
+             497 POP_TOP
+
+297:         498 LOAD_GLOBAL          (pygame)
+             501 LOAD_ATTR            (sprite)
+             504 LOAD_ATTR            (Group)
+             507 CALL_FUNCTION        (0 positional, 0 named)
+             510 STORE_FAST           (animalGroup)
+
+298:         513 LOAD_GLOBAL          (pygame)
+             516 LOAD_ATTR            (sprite)
+             519 LOAD_ATTR            (Group)
+             522 CALL_FUNCTION        (0 positional, 0 named)
+             525 STORE_FAST           (cageGroup)
+
+299:         528 LOAD_GLOBAL          (pygame)
+             531 LOAD_ATTR            (sprite)
+             534 LOAD_ATTR            (Group)
+             537 CALL_FUNCTION        (0 positional, 0 named)
+             540 STORE_FAST           (cageNameGroup)
+
+300:         543 LOAD_GLOBAL          (pygame)
+             546 LOAD_ATTR            (sprite)
+             549 LOAD_ATTR            (RenderUpdates)
+             552 CALL_FUNCTION        (0 positional, 0 named)
+             555 STORE_FAST           (allGroup)
+
+303:         558 LOAD_FAST            (animalGroup)
+             561 LOAD_FAST            (allGroup)
+             564 BUILD_TUPLE          2
+             567 LOAD_GLOBAL          (Animal)
+             570 STORE_ATTR           (containers)
+
+304:         573 LOAD_FAST            (cageGroup)
+             576 LOAD_FAST            (allGroup)
+             579 BUILD_TUPLE          2
+             582 LOAD_GLOBAL          (Cage)
+             585 STORE_ATTR           (containers)
+
+305:         588 LOAD_FAST            (cageNameGroup)
+             591 LOAD_FAST            (allGroup)
+             594 BUILD_TUPLE          2
+             597 LOAD_GLOBAL          (CageName)
+             600 STORE_ATTR           (containers)
+
+306:         603 LOAD_FAST            (allGroup)
+             606 LOAD_GLOBAL          (Guide)
+             609 STORE_ATTR           (containers)
+
+308:         612 LOAD_GLOBAL          (pygame)
+             615 LOAD_ATTR            (time)
+             618 LOAD_ATTR            (Clock)
+             621 CALL_FUNCTION        (0 positional, 0 named)
+             624 STORE_FAST           (clock)
+
+312:         627 LOAD_GLOBAL          (Guide)
+             630 CALL_FUNCTION        (0 positional, 0 named)
+             633 STORE_FAST           (guide)
+
+314:         636 LOAD_GLOBAL          (Animal)
+             639 LOAD_CONST           ("beaver")
+             642 CALL_FUNCTION        (1 positional, 0 named)
+             645 STORE_FAST           (beaver)
+
+315:         648 LOAD_GLOBAL          (Animal)
+             651 LOAD_CONST           ("elephant")
+             654 CALL_FUNCTION        (1 positional, 0 named)
+             657 STORE_FAST           (elephant)
+
+316:         660 LOAD_GLOBAL          (Animal)
+             663 LOAD_CONST           ("monkey")
+             666 CALL_FUNCTION        (1 positional, 0 named)
+             669 STORE_FAST           (monkey)
+
+317:         672 LOAD_CONST           (1)
+             675 LOAD_FAST            (monkey)
+             678 STORE_ATTR           (left)
+
+318:         681 LOAD_CONST           (0)
+             684 LOAD_FAST            (monkey)
+             687 STORE_ATTR           (right)
+
+319:         690 LOAD_GLOBAL          (Animal)
+             693 LOAD_CONST           ("penguin")
+             696 CALL_FUNCTION        (1 positional, 0 named)
+             699 STORE_FAST           (penguin)
+
+320:         702 LOAD_CONST           (1)
+             705 LOAD_FAST            (penguin)
+             708 STORE_ATTR           (left)
+
+321:         711 LOAD_CONST           (0)
+             714 LOAD_FAST            (penguin)
+             717 STORE_ATTR           (right)
+
+322:         720 LOAD_GLOBAL          (Animal)
+             723 LOAD_CONST           ("snake")
+             726 CALL_FUNCTION        (1 positional, 0 named)
+             729 STORE_FAST           (snake)
+
+323:         732 LOAD_GLOBAL          (Animal)
+             735 LOAD_CONST           ("zebra")
+             738 CALL_FUNCTION        (1 positional, 0 named)
+             741 STORE_FAST           (zebra)
+
+325:         744 LOAD_FAST            (beaver)
+             747 LOAD_FAST            (elephant)
+             750 LOAD_FAST            (monkey)
+             753 LOAD_FAST            (penguin)
+             756 LOAD_FAST            (snake)
+             759 LOAD_FAST            (zebra)
+             762 BUILD_TUPLE          6
+             765 STORE_FAST           (animalList)
+
+327:         768 LOAD_GLOBAL          (Cage)
+             771 LOAD_FAST            (beaver)
+             774 LOAD_CONST           (0)
+             777 CALL_FUNCTION        (2 positional, 0 named)
+             780 STORE_FAST           (beaverCage)
+
+328:         783 LOAD_GLOBAL          (CageName)
+             786 LOAD_FAST            (beaverCage)
+             789 CALL_FUNCTION        (1 positional, 0 named)
+             792 STORE_FAST           (beaverCageText)
+
+330:         795 LOAD_GLOBAL          (Cage)
+             798 LOAD_FAST            (elephant)
+             801 LOAD_CONST           (1)
+             804 CALL_FUNCTION        (2 positional, 0 named)
+             807 STORE_FAST           (elephantCage)
+
+331:         810 LOAD_GLOBAL          (CageName)
+             813 LOAD_FAST            (elephantCage)
+             816 CALL_FUNCTION        (1 positional, 0 named)
+             819 STORE_FAST           (elephantCageText)
+
+333:         822 LOAD_GLOBAL          (Cage)
+             825 LOAD_FAST            (monkey)
+             828 LOAD_CONST           (2)
+             831 CALL_FUNCTION        (2 positional, 0 named)
+             834 STORE_FAST           (monkeyCage)
+
+334:         837 LOAD_GLOBAL          (CageName)
+             840 LOAD_FAST            (monkeyCage)
+             843 CALL_FUNCTION        (1 positional, 0 named)
+             846 STORE_FAST           (monkeyCageText)
+
+336:         849 LOAD_GLOBAL          (Cage)
+             852 LOAD_FAST            (penguin)
+             855 LOAD_CONST           (3)
+             858 CALL_FUNCTION        (2 positional, 0 named)
+             861 STORE_FAST           (penguinCage)
+
+337:         864 LOAD_GLOBAL          (CageName)
+             867 LOAD_FAST            (penguinCage)
+             870 CALL_FUNCTION        (1 positional, 0 named)
+             873 STORE_FAST           (penguinCageText)
+
+339:         876 LOAD_GLOBAL          (Cage)
+             879 LOAD_FAST            (snake)
+             882 LOAD_CONST           (4)
+             885 CALL_FUNCTION        (2 positional, 0 named)
+             888 STORE_FAST           (snakeCage)
+
+340:         891 LOAD_GLOBAL          (CageName)
+             894 LOAD_FAST            (snakeCage)
+             897 CALL_FUNCTION        (1 positional, 0 named)
+             900 STORE_FAST           (snakeCageText)
+
+342:         903 LOAD_GLOBAL          (Cage)
+             906 LOAD_FAST            (zebra)
+             909 LOAD_CONST           (5)
+             912 CALL_FUNCTION        (2 positional, 0 named)
+             915 STORE_FAST           (zebraCage)
+
+343:         918 LOAD_GLOBAL          (CageName)
+             921 LOAD_FAST            (zebraCage)
+             924 CALL_FUNCTION        (1 positional, 0 named)
+             927 STORE_FAST           (zebraCageText)
+
+345:         930 LOAD_FAST            (beaverCage)
+             933 LOAD_FAST            (elephantCage)
+             936 LOAD_FAST            (monkeyCage)
+             939 LOAD_FAST            (penguinCage)
+             942 LOAD_FAST            (snakeCage)
+             945 LOAD_FAST            (zebraCage)
+             948 BUILD_TUPLE          6
+             951 STORE_FAST           (cageList)
+
+347:         954 LOAD_GLOBAL          (get_sound)
+             957 LOAD_CONST           ("intro")
+             960 CALL_FUNCTION        (1 positional, 0 named)
+             963 STORE_FAST           (sound)
+
+348:         966 LOAD_FAST            (sound)
+             969 LOAD_ATTR            (play)
+             972 CALL_FUNCTION        (0 positional, 0 named)
+             975 POP_TOP
+
+350:         976 LOAD_FAST            (beaverCage)
+             979 LOAD_ATTR            (lockup)
+             982 LOAD_FAST            (beaver)
+             985 CALL_FUNCTION        (1 positional, 0 named)
+             988 POP_TOP
+
+351:         989 LOAD_FAST            (elephantCage)
+             992 LOAD_ATTR            (lockup)
+             995 LOAD_FAST            (elephant)
+             998 CALL_FUNCTION        (1 positional, 0 named)
+            1001 POP_TOP
+
+352:        1002 LOAD_FAST            (monkeyCage)
+            1005 LOAD_ATTR            (lockup)
+            1008 LOAD_FAST            (monkey)
+            1011 CALL_FUNCTION        (1 positional, 0 named)
+            1014 POP_TOP
+
+353:        1015 LOAD_FAST            (penguinCage)
+            1018 LOAD_ATTR            (lockup)
+            1021 LOAD_FAST            (penguin)
+            1024 CALL_FUNCTION        (1 positional, 0 named)
+            1027 POP_TOP
+
+354:        1028 LOAD_FAST            (snakeCage)
+            1031 LOAD_ATTR            (lockup)
+            1034 LOAD_FAST            (snake)
+            1037 CALL_FUNCTION        (1 positional, 0 named)
+            1040 POP_TOP
+
+355:        1041 LOAD_FAST            (zebraCage)
+            1044 LOAD_ATTR            (lockup)
+            1047 LOAD_FAST            (zebra)
+            1050 CALL_FUNCTION        (1 positional, 0 named)
+            1053 POP_TOP
+
+357:        1054 LOAD_FAST            (clock)
+            1057 LOAD_ATTR            (tick)
+            1060 LOAD_CONST           (30)
+            1063 CALL_FUNCTION        (1 positional, 0 named)
+            1066 POP_TOP
+
+358:        1067 LOAD_CONST           (0)
+            1070 STORE_FAST           (totalTime)
+
+359:        1073 LOAD_CONST           (16000)
+            1076 STORE_FAST           (lockupTime)
+
+360:        1079 LOAD_GLOBAL          (True)
+            1082 STORE_FAST           (locked)
+
+361:        1085 LOAD_CONST           (0)
+            1088 STORE_FAST           (score)
+
+362:        1091 LOAD_GLOBAL          (False)
+            1094 STORE_FAST           (done)
+
+363:        1097 SETUP_LOOP           (to 1740)
+
+363:        1100 LOAD_FAST            (done)
+            1103 UNARY_NOT
+            1104 JUMP_IF_FALSE        (to 1738)
+            1107 POP_TOP
+
+365:        1108 LOAD_GLOBAL          (pygame)
+            1111 LOAD_ATTR            (event)
+            1114 LOAD_ATTR            (pump)
+            1117 CALL_FUNCTION        (0 positional, 0 named)
+            1120 POP_TOP
+
+366:        1121 LOAD_FAST            (totalTime)
+            1124 LOAD_FAST            (clock)
+            1127 LOAD_ATTR            (get_time)
+            1130 CALL_FUNCTION        (0 positional, 0 named)
+            1133 BINARY_ADD
+            1134 STORE_FAST           (totalTime)
+
+368:        1137 LOAD_FAST            (locked)
+            1140 JUMP_IF_FALSE        (to 1153)
+            1143 POP_TOP
+            1144 LOAD_FAST            (totalTime)
+            1147 LOAD_FAST            (lockupTime)
+            1150 COMPARE_OP           (>)
+         >> 1153 JUMP_IF_FALSE        (to 1248)
+            1156 POP_TOP
+
+369:        1157 LOAD_GLOBAL          (False)
+            1160 STORE_FAST           (locked)
+
+370:        1163 LOAD_FAST            (beaverCage)
+            1166 LOAD_ATTR            (unlock)
+            1169 CALL_FUNCTION        (0 positional, 0 named)
+            1172 POP_TOP
+
+371:        1173 LOAD_FAST            (elephantCage)
+            1176 LOAD_ATTR            (unlock)
+            1179 CALL_FUNCTION        (0 positional, 0 named)
+            1182 POP_TOP
+
+372:        1183 LOAD_FAST            (monkeyCage)
+            1186 LOAD_ATTR            (unlock)
+            1189 CALL_FUNCTION        (0 positional, 0 named)
+            1192 POP_TOP
+
+373:        1193 LOAD_FAST            (penguinCage)
+            1196 LOAD_ATTR            (unlock)
+            1199 CALL_FUNCTION        (0 positional, 0 named)
+            1202 POP_TOP
+
+374:        1203 LOAD_FAST            (snakeCage)
+            1206 LOAD_ATTR            (unlock)
+            1209 CALL_FUNCTION        (0 positional, 0 named)
+            1212 POP_TOP
+
+375:        1213 LOAD_FAST            (zebraCage)
+            1216 LOAD_ATTR            (unlock)
+            1219 CALL_FUNCTION        (0 positional, 0 named)
+            1222 POP_TOP
+
+376:        1223 LOAD_GLOBAL          (get_sound)
+         >> 1226 LOAD_CONST           ("escaped")
+            1229 CALL_FUNCTION        (1 positional, 0 named)
+            1232 STORE_FAST           (sound)
+
+377:        1235 LOAD_FAST            (sound)
+            1238 LOAD_ATTR            (play)
+            1241 CALL_FUNCTION        (0 positional, 0 named)
+            1244 POP_TOP
+            1245 JUMP_FORWARD         (to 1249)
+         >> 1248 POP_TOP
+
+380:     >> 1249 SETUP_LOOP           (to 1333)
+            1252 LOAD_GLOBAL          (pygame)
+            1255 LOAD_ATTR            (event)
+            1258 LOAD_ATTR            (get)
+            1261 CALL_FUNCTION        (0 positional, 0 named)
+            1264 GET_ITER
+
+380:        1265 FOR_ITER             (to 1332)
+            1268 STORE_FAST           (event)
+
+381:        1271 LOAD_FAST            (event)
+            1274 LOAD_ATTR            (type)
+            1277 LOAD_GLOBAL          (QUIT)
+            1280 COMPARE_OP           (==)
+            1283 JUMP_IF_TRUE         (to 1315)
+            1286 POP_TOP
+            1287 LOAD_FAST            (event)
+            1290 LOAD_ATTR            (type)
+            1293 LOAD_GLOBAL          (KEYDOWN)
+            1296 COMPARE_OP           (==)
+            1299 JUMP_IF_FALSE        (to 1315)
+            1302 POP_TOP
+            1303 LOAD_FAST            (event)
+            1306 LOAD_ATTR            (key)
+            1309 LOAD_GLOBAL          (K_ESCAPE)
+            1312 COMPARE_OP           (==)
+         >> 1315 JUMP_IF_FALSE        (to 1328)
+            1318 POP_TOP
+
+383:        1319 LOAD_GLOBAL          (True)
+            1322 STORE_FAST           (done)
+            1325 JUMP_ABSOLUTE        (to 1265)
+         >> 1328 POP_TOP
+            1329 JUMP_ABSOLUTE        (to 1265)
+         >> 1332 POP_BLOCK
+
+385:     >> 1333 LOAD_GLOBAL          (pygame)
+            1336 LOAD_ATTR            (key)
+            1339 LOAD_ATTR            (get_pressed)
+            1342 CALL_FUNCTION        (0 positional, 0 named)
+            1345 STORE_FAST           (keystate)
+
+388:        1348 LOAD_FAST            (allGroup)
+            1351 LOAD_ATTR            (clear)
+            1354 LOAD_FAST            (screen)
+            1357 LOAD_FAST            (background)
+            1360 CALL_FUNCTION        (2 positional, 0 named)
+            1363 POP_TOP
+
+391:        1364 LOAD_FAST            (allGroup)
+            1367 LOAD_ATTR            (update)
+            1370 CALL_FUNCTION        (0 positional, 0 named)
+            1373 POP_TOP
+
+394:        1374 LOAD_GLOBAL          (DIR_NONE)
+            1377 STORE_FAST           (direction)
+
+395:        1380 LOAD_FAST            (keystate)
+            1383 LOAD_GLOBAL          (K_UP)
+            1386 BINARY_SUBSCR
+            1387 JUMP_IF_FALSE        (to 1400)
+            1390 POP_TOP
+
+396:        1391 LOAD_GLOBAL          (DIR_UP)
+            1394 STORE_FAST           (direction)
+            1397 JUMP_FORWARD         (to 1464)
+         >> 1400 POP_TOP
+
+397:        1401 LOAD_FAST            (keystate)
+            1404 LOAD_GLOBAL          (K_DOWN)
+            1407 BINARY_SUBSCR
+            1408 JUMP_IF_FALSE        (to 1421)
+            1411 POP_TOP
+
+398:        1412 LOAD_GLOBAL          (DIR_DOWN)
+            1415 STORE_FAST           (direction)
+            1418 JUMP_FORWARD         (to 1464)
+         >> 1421 POP_TOP
+
+399:        1422 LOAD_FAST            (keystate)
+            1425 LOAD_GLOBAL          (K_LEFT)
+            1428 BINARY_SUBSCR
+            1429 JUMP_IF_FALSE        (to 1442)
+            1432 POP_TOP
+
+400:        1433 LOAD_GLOBAL          (DIR_LEFT)
+            1436 STORE_FAST           (direction)
+            1439 JUMP_FORWARD         (to 1464)
+         >> 1442 POP_TOP
+
+401:        1443 LOAD_FAST            (keystate)
+            1446 LOAD_GLOBAL          (K_RIGHT)
+            1449 BINARY_SUBSCR
+            1450 JUMP_IF_FALSE        (to 1463)
+            1453 POP_TOP
+
+402:        1454 LOAD_GLOBAL          (DIR_RIGHT)
+            1457 STORE_FAST           (direction)
+            1460 JUMP_FORWARD         (to 1464)
+         >> 1463 POP_TOP
+
+404:     >> 1464 LOAD_FAST            (guide)
+            1467 LOAD_ATTR            (move)
+            1470 LOAD_FAST            (direction)
+            1473 CALL_FUNCTION        (1 positional, 0 named)
+            1476 POP_TOP
+
+407:        1477 SETUP_LOOP           (to 1504)
+            1480 LOAD_FAST            (animalList)
+            1483 GET_ITER
+
+407:        1484 FOR_ITER             (to 1503)
+            1487 STORE_FAST           (animal)
+
+408:        1490 LOAD_FAST            (animal)
+            1493 LOAD_ATTR            (move)
+            1496 CALL_FUNCTION        (0 positional, 0 named)
+            1499 POP_TOP
+            1500 JUMP_ABSOLUTE        (to 1484)
+         >> 1503 POP_BLOCK
+
+411:     >> 1504 LOAD_FAST            (totalTime)
+            1507 LOAD_CONST           (23000)
+            1510 COMPARE_OP           (>)
+            1513 JUMP_IF_FALSE        (to 1616)
+            1516 POP_TOP
+
+412:        1517 SETUP_LOOP           (to 1565)
+            1520 LOAD_GLOBAL          (pygame)
+            1523 LOAD_ATTR            (sprite)
+            1526 LOAD_ATTR            (spritecollide)
+            1529 LOAD_FAST            (guide)
+            1532 LOAD_FAST            (animalGroup)
+            1535 LOAD_CONST           (0)
+            1538 CALL_FUNCTION        (3 positional, 0 named)
+            1541 GET_ITER
+
+412:        1542 FOR_ITER             (to 1564)
+            1545 STORE_FAST           (theAnimal)
+
+413:        1548 LOAD_FAST            (guide)
+            1551 LOAD_ATTR            (grabAnimal)
+            1554 LOAD_FAST            (theAnimal)
+            1557 CALL_FUNCTION        (1 positional, 0 named)
+            1560 POP_TOP
+            1561 JUMP_ABSOLUTE        (to 1542)
+         >> 1564 POP_BLOCK
+
+415:     >> 1565 SETUP_LOOP           (to 1617)
+            1568 LOAD_GLOBAL          (pygame)
+            1571 LOAD_ATTR            (sprite)
+            1574 LOAD_ATTR            (spritecollide)
+            1577 LOAD_FAST            (guide)
+            1580 LOAD_FAST            (cageGroup)
+            1583 LOAD_CONST           (0)
+            1586 CALL_FUNCTION        (3 positional, 0 named)
+            1589 GET_ITER
+
+415:        1590 FOR_ITER             (to 1612)
+            1593 STORE_FAST           (theCage)
+
+416:        1596 LOAD_FAST            (guide)
+            1599 LOAD_ATTR            (lockupAnimal)
+            1602 LOAD_FAST            (theCage)
+            1605 CALL_FUNCTION        (1 positional, 0 named)
+            1608 POP_TOP
+            1609 JUMP_ABSOLUTE        (to 1590)
+         >> 1612 POP_BLOCK
+            1613 JUMP_FORWARD         (to 1617)
+         >> 1616 POP_TOP
+
+419:     >> 1617 LOAD_CONST           (0)
+            1620 STORE_FAST           (score)
+
+420:        1623 LOAD_FAST            (locked)
+            1626 UNARY_NOT
+            1627 JUMP_IF_FALSE        (to 1667)
+            1630 POP_TOP
+
+421:        1631 SETUP_LOOP           (to 1668)
+            1634 LOAD_FAST            (cageList)
+            1637 GET_ITER
+
+421:        1638 FOR_ITER             (to 1663)
+            1641 STORE_FAST           (theCage)
+
+422:        1644 LOAD_FAST            (score)
+            1647 LOAD_FAST            (theCage)
+            1650 LOAD_ATTR            (hasCorrectAnimal)
+            1653 CALL_FUNCTION        (0 positional, 0 named)
+            1656 BINARY_ADD
+            1657 STORE_FAST           (score)
+            1660 JUMP_ABSOLUTE        (to 1638)
+         >> 1663 POP_BLOCK
+            1664 JUMP_FORWARD         (to 1668)
+         >> 1667 POP_TOP
+
+424:     >> 1668 LOAD_FAST            (score)
+            1671 LOAD_GLOBAL          (MAX_SCORE)
+            1674 COMPARE_OP           (==)
+            1677 JUMP_IF_FALSE        (to 1690)
+            1680 POP_TOP
+
+425:        1681 LOAD_GLOBAL          (True)
+            1684 STORE_FAST           (done)
+            1687 JUMP_FORWARD         (to 1691)
+         >> 1690 POP_TOP
+
+428:     >> 1691 LOAD_FAST            (allGroup)
+            1694 LOAD_ATTR            (draw)
+            1697 LOAD_FAST            (screen)
+            1700 CALL_FUNCTION        (1 positional, 0 named)
+            1703 STORE_FAST           (dirty)
+
+429:        1706 LOAD_GLOBAL          (pygame)
+            1709 LOAD_ATTR            (display)
+            1712 LOAD_ATTR            (update)
+            1715 LOAD_FAST            (dirty)
+            1718 CALL_FUNCTION        (1 positional, 0 named)
+            1721 POP_TOP
+
+432:        1722 LOAD_FAST            (clock)
+            1725 LOAD_ATTR            (tick)
+            1728 LOAD_CONST           (30)
+            1731 CALL_FUNCTION        (1 positional, 0 named)
+            1734 POP_TOP
+            1735 JUMP_ABSOLUTE        (to 1100)
+            1738 POP_TOP
+            1739 POP_BLOCK
+
+435:        1740 LOAD_FAST            (score)
+            1743 LOAD_GLOBAL          (MAX_SCORE)
+            1746 COMPARE_OP           (==)
+            1749 JUMP_IF_FALSE        (to 1907)
+            1752 POP_TOP
+
+436:        1753 LOAD_FAST            (screen)
+            1756 LOAD_ATTR            (blit)
+            1759 LOAD_FAST            (way_to_go_image)
+            1762 LOAD_CONST           (0)
+            1765 LOAD_CONST           (0)
+            1768 BUILD_TUPLE          2
+            1771 CALL_FUNCTION        (2 positional, 0 named)
+            1774 POP_TOP
+
+437:        1775 LOAD_GLOBAL          (pygame)
+            1778 LOAD_ATTR            (display)
+            1781 LOAD_ATTR            (flip)
+            1784 CALL_FUNCTION        (0 positional, 0 named)
+            1787 POP_TOP
+
+438:        1788 LOAD_GLOBAL          (get_sound)
+            1791 LOAD_CONST           ("youre_a_ranger")
+            1794 CALL_FUNCTION        (1 positional, 0 named)
+            1797 STORE_FAST           (sound)
+
+439:        1800 LOAD_FAST            (sound)
+            1803 LOAD_ATTR            (play)
+            1806 CALL_FUNCTION        (0 positional, 0 named)
+            1809 POP_TOP
+
+441:        1810 SETUP_LOOP           (to 1846)
+
+441:        1813 LOAD_GLOBAL          (pygame)
+            1816 LOAD_ATTR            (mixer)
+            1819 LOAD_ATTR            (get_busy)
+            1822 CALL_FUNCTION        (0 positional, 0 named)
+            1825 LOAD_CONST           (0)
+            1828 COMPARE_OP           (>)
+            1831 JUMP_IF_FALSE        (to 1844)
+            1834 POP_TOP
+
+442:        1835 LOAD_CONST           (1)
+            1838 STORE_FAST           (x)
+            1841 JUMP_ABSOLUTE        (to 1813)
+         >> 1844 POP_TOP
+            1845 POP_BLOCK
+
+444:     >> 1846 LOAD_GLOBAL          (get_sound)
+            1849 LOAD_CONST           ("ending")
+            1852 CALL_FUNCTION        (1 positional, 0 named)
+            1855 STORE_FAST           (sound)
+
+445:        1858 LOAD_FAST            (sound)
+            1861 LOAD_ATTR            (play)
+            1864 CALL_FUNCTION        (0 positional, 0 named)
+            1867 POP_TOP
+
+447:        1868 SETUP_LOOP           (to 1908)
+
+447:        1871 LOAD_GLOBAL          (pygame)
+            1874 LOAD_ATTR            (mixer)
+            1877 LOAD_ATTR            (get_busy)
+            1880 CALL_FUNCTION        (0 positional, 0 named)
+            1883 LOAD_CONST           (0)
+            1886 COMPARE_OP           (>)
+            1889 JUMP_IF_FALSE        (to 1902)
+            1892 POP_TOP
+
+448:        1893 LOAD_CONST           (1)
+            1896 STORE_FAST           (x)
+            1899 JUMP_ABSOLUTE        (to 1871)
+         >> 1902 POP_TOP
+            1903 POP_BLOCK
+            1904 JUMP_FORWARD         (to 1908)
+         >> 1907 POP_TOP
+
+450:     >> 1908 LOAD_GLOBAL          (pygame)
+            1911 LOAD_ATTR            (mixer)
+            1914 JUMP_IF_FALSE        (to 1940)
+            1917 POP_TOP
+
+451:        1918 LOAD_GLOBAL          (pygame)
+            1921 LOAD_ATTR            (mixer)
+            1924 LOAD_ATTR            (music)
+            1927 LOAD_ATTR            (fadeout)
+            1930 LOAD_CONST           (1000)
+            1933 CALL_FUNCTION        (1 positional, 0 named)
+            1936 POP_TOP
+            1937 JUMP_FORWARD         (to 1941)
+         >> 1940 POP_TOP
+
+452:     >> 1941 LOAD_GLOBAL          (pygame)
+            1944 LOAD_ATTR            (time)
+            1947 LOAD_ATTR            (wait)
+            1950 LOAD_CONST           (1100)
+            1953 CALL_FUNCTION        (1 positional, 0 named)
+            1956 POP_TOP
+            1957 LOAD_CONST           (None)
+            1960 RETURN_VALUE
+
+
+# Method Name:       dummy_sound
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        63
+# Constants:
+#    0: None
+#    1: <Code2 code object play at 0x106558350, file spiro.pyw>, line 64
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: play
+ 63:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+ 64:           6 LOAD_CONST           (<Code2 code object play at 0x106558350, file spiro.pyw>, line 64)
+               9 MAKE_FUNCTION        (0 default parameters)
+              12 STORE_NAME           (play)
+              15 LOAD_LOCALS
+              16 RETURN_VALUE
+
+
+# Method Name:       __init__
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  2
+# Stack size:        4
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        90
+# Constants:
+#    0: None
+#    1: 'guide.png'
+#    2: 1
+#    3: 0
+#    4: 5
+# Names:
+#    0: pygame
+#    1: sprite
+#    2: Sprite
+#    3: __init__
+#    4: self
+#    5: containers
+#    6: GUIDERECT
+#    7: clamprect
+#    8: load_image
+#    9: img
+#   10: transform
+#   11: flip
+#   12: images
+#   13: image
+#   14: get_rect
+#   15: rect
+#   16: centerx
+#   17: top
+#   18: speed
+#   19: full
+#   20: Animal
+#   21: animal
+# Varnames:
+#	self, img
+# Positional arguments:
+#	self
+# Local variables:
+#    1: img
+ 91:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (sprite)
+               6 LOAD_ATTR            (Sprite)
+               9 LOAD_ATTR            (__init__)
+              12 LOAD_FAST            (self)
+              15 LOAD_FAST            (self)
+              18 LOAD_ATTR            (containers)
+              21 CALL_FUNCTION        (2 positional, 0 named)
+              24 POP_TOP
+
+ 92:          25 LOAD_GLOBAL          (GUIDERECT)
+              28 LOAD_FAST            (self)
+              31 STORE_ATTR           (clamprect)
+
+ 93:          34 LOAD_GLOBAL          (load_image)
+              37 LOAD_CONST           ("guide.png")
+              40 CALL_FUNCTION        (1 positional, 0 named)
+              43 STORE_FAST           (img)
+
+ 94:          46 LOAD_GLOBAL          (pygame)
+              49 LOAD_ATTR            (transform)
+              52 LOAD_ATTR            (flip)
+              55 LOAD_FAST            (img)
+              58 LOAD_CONST           (1)
+              61 LOAD_CONST           (0)
+              64 CALL_FUNCTION        (3 positional, 0 named)
+              67 LOAD_FAST            (img)
+              70 BUILD_LIST           2
+              73 LOAD_FAST            (self)
+              76 STORE_ATTR           (images)
+
+ 95:          79 LOAD_FAST            (self)
+              82 LOAD_ATTR            (images)
+              85 LOAD_CONST           (0)
+              88 BINARY_SUBSCR
+              89 LOAD_FAST            (self)
+              92 STORE_ATTR           (image)
+
+ 96:          95 LOAD_FAST            (self)
+              98 LOAD_ATTR            (image)
+             101 LOAD_ATTR            (get_rect)
+             104 CALL_FUNCTION        (0 positional, 0 named)
+             107 LOAD_FAST            (self)
+             110 STORE_ATTR           (rect)
+
+ 97:         113 LOAD_FAST            (self)
+             116 LOAD_ATTR            (clamprect)
+             119 LOAD_ATTR            (centerx)
+             122 LOAD_FAST            (self)
+             125 LOAD_ATTR            (rect)
+             128 STORE_ATTR           (centerx)
+
+ 98:         131 LOAD_FAST            (self)
+             134 LOAD_ATTR            (clamprect)
+             137 LOAD_ATTR            (top)
+             140 LOAD_FAST            (self)
+             143 LOAD_ATTR            (rect)
+             146 STORE_ATTR           (top)
+
+ 99:         149 LOAD_CONST           (5)
+             152 LOAD_FAST            (self)
+             155 STORE_ATTR           (speed)
+
+100:         158 LOAD_CONST           (0)
+             161 LOAD_FAST            (self)
+             164 STORE_ATTR           (full)
+
+101:         167 LOAD_GLOBAL          (Animal)
+             170 LOAD_FAST            (self)
+             173 STORE_ATTR           (animal)
+             176 LOAD_CONST           (None)
+             179 RETURN_VALUE
+
+
+# Method Name:       move
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  2
+# Stack size:        3
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        103
+# Constants:
+#    0: None
+#    1: 0
+#    2: 1
+# Names:
+#    0: direction
+#    1: DIR_UP
+#    2: self
+#    3: rect
+#    4: move_ip
+#    5: speed
+#    6: DIR_DOWN
+#    7: DIR_LEFT
+#    8: images
+#    9: image
+#   10: DIR_RIGHT
+#   11: clamp
+#   12: clamprect
+# Varnames:
+#	self, direction
+# Positional arguments:
+#	self, direction
+104:           0 LOAD_FAST            (direction)
+               3 LOAD_GLOBAL          (DIR_UP)
+               6 COMPARE_OP           (==)
+               9 JUMP_IF_FALSE        (to 39)
+              12 POP_TOP
+
+105:          13 LOAD_FAST            (self)
+              16 LOAD_ATTR            (rect)
+              19 LOAD_ATTR            (move_ip)
+              22 LOAD_CONST           (0)
+              25 LOAD_FAST            (self)
+              28 LOAD_ATTR            (speed)
+              31 UNARY_NEGATIVE
+              32 CALL_FUNCTION        (2 positional, 0 named)
+              35 POP_TOP
+              36 JUMP_FORWARD         (to 190)
+         >>   39 POP_TOP
+
+106:          40 LOAD_FAST            (direction)
+              43 LOAD_GLOBAL          (DIR_DOWN)
+              46 COMPARE_OP           (==)
+              49 JUMP_IF_FALSE        (to 78)
+              52 POP_TOP
+
+107:          53 LOAD_FAST            (self)
+              56 LOAD_ATTR            (rect)
+              59 LOAD_ATTR            (move_ip)
+              62 LOAD_CONST           (0)
+              65 LOAD_FAST            (self)
+              68 LOAD_ATTR            (speed)
+              71 CALL_FUNCTION        (2 positional, 0 named)
+              74 POP_TOP
+              75 JUMP_FORWARD         (to 190)
+         >>   78 POP_TOP
+
+108:          79 LOAD_FAST            (direction)
+              82 LOAD_GLOBAL          (DIR_LEFT)
+              85 COMPARE_OP           (==)
+              88 JUMP_IF_FALSE        (to 134)
+              91 POP_TOP
+
+109:          92 LOAD_FAST            (self)
+              95 LOAD_ATTR            (images)
+              98 LOAD_CONST           (0)
+             101 BINARY_SUBSCR
+             102 LOAD_FAST            (self)
+             105 STORE_ATTR           (image)
+
+110:         108 LOAD_FAST            (self)
+             111 LOAD_ATTR            (rect)
+             114 LOAD_ATTR            (move_ip)
+             117 LOAD_FAST            (self)
+             120 LOAD_ATTR            (speed)
+             123 UNARY_NEGATIVE
+             124 LOAD_CONST           (0)
+             127 CALL_FUNCTION        (2 positional, 0 named)
+             130 POP_TOP
+             131 JUMP_FORWARD         (to 190)
+         >>  134 POP_TOP
+
+111:         135 LOAD_FAST            (direction)
+             138 LOAD_GLOBAL          (DIR_RIGHT)
+             141 COMPARE_OP           (==)
+             144 JUMP_IF_FALSE        (to 189)
+             147 POP_TOP
+
+112:         148 LOAD_FAST            (self)
+             151 LOAD_ATTR            (images)
+             154 LOAD_CONST           (1)
+             157 BINARY_SUBSCR
+             158 LOAD_FAST            (self)
+             161 STORE_ATTR           (image)
+
+113:         164 LOAD_FAST            (self)
+             167 LOAD_ATTR            (rect)
+             170 LOAD_ATTR            (move_ip)
+             173 LOAD_FAST            (self)
+             176 LOAD_ATTR            (speed)
+             179 LOAD_CONST           (0)
+             182 CALL_FUNCTION        (2 positional, 0 named)
+             185 POP_TOP
+             186 JUMP_FORWARD         (to 190)
+         >>  189 POP_TOP
+
+115:     >>  190 LOAD_FAST            (self)
+             193 LOAD_ATTR            (rect)
+             196 LOAD_ATTR            (clamp)
+             199 LOAD_FAST            (self)
+             202 LOAD_ATTR            (clamprect)
+             205 CALL_FUNCTION        (1 positional, 0 named)
+             208 LOAD_FAST            (self)
+             211 STORE_ATTR           (rect)
+             214 LOAD_CONST           (None)
+             217 RETURN_VALUE
+
+
+# Method Name:       grabAnimal
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  3
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        117
+# Constants:
+#    0: None
+#    1: 1
+#    2: 'gotcha'
+#    3: 0
+# Names:
+#    0: self
+#    1: full
+#    2: animal
+#    3: follow
+#    4: free
+#    5: get_sound
+#    6: sound
+#    7: play
+# Varnames:
+#	self, animal, sound
+# Positional arguments:
+#	self, animal
+# Local variables:
+#    2: sound
+118:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (full)
+               6 UNARY_NOT
+               7 JUMP_IF_FALSE        (to 103)
+              10 POP_TOP
+
+119:          11 LOAD_FAST            (animal)
+              14 LOAD_FAST            (self)
+              17 STORE_ATTR           (animal)
+
+120:          20 LOAD_FAST            (self)
+              23 LOAD_ATTR            (animal)
+              26 LOAD_ATTR            (follow)
+              29 LOAD_FAST            (self)
+              32 CALL_FUNCTION        (1 positional, 0 named)
+              35 LOAD_FAST            (self)
+              38 STORE_ATTR           (full)
+
+121:          41 LOAD_FAST            (self)
+              44 LOAD_ATTR            (full)
+              47 LOAD_CONST           (1)
+              50 COMPARE_OP           (==)
+              53 JUMP_IF_FALSE        (to 66)
+              56 POP_TOP
+              57 LOAD_FAST            (self)
+              60 LOAD_ATTR            (animal)
+              63 LOAD_ATTR            (free)
+         >>   66 JUMP_IF_FALSE        (to 95)
+              69 POP_TOP
+
+122:          70 LOAD_GLOBAL          (get_sound)
+              73 LOAD_CONST           ("gotcha")
+              76 CALL_FUNCTION        (1 positional, 0 named)
+              79 STORE_FAST           (sound)
+
+123:          82 LOAD_FAST            (sound)
+              85 LOAD_ATTR            (play)
+              88 CALL_FUNCTION        (0 positional, 0 named)
+              91 POP_TOP
+              92 JUMP_FORWARD         (to 96)
+         >>   95 POP_TOP
+
+124:     >>   96 LOAD_CONST           (1)
+              99 RETURN_VALUE
+             100 JUMP_FORWARD         (to 108)
+         >>  103 POP_TOP
+
+126:         104 LOAD_CONST           (0)
+             107 RETURN_VALUE
+         >>  108 LOAD_CONST           (None)
+             111 RETURN_VALUE
+
+
+# Method Name:       lockupAnimal
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  2
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        128
+# Constants:
+#    0: None
+#    1: 0
+# Names:
+#    0: self
+#    1: full
+#    2: animal
+#    3: lockup
+#    4: cage
+#    5: following
+# Varnames:
+#	self, cage
+# Positional arguments:
+#	self, cage
+129:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (full)
+               6 JUMP_IF_FALSE        (to 56)
+               9 POP_TOP
+
+130:          10 LOAD_FAST            (self)
+              13 LOAD_ATTR            (animal)
+              16 LOAD_ATTR            (lockup)
+              19 LOAD_FAST            (cage)
+              22 CALL_FUNCTION        (1 positional, 0 named)
+              25 POP_TOP
+
+131:          26 LOAD_FAST            (self)
+              29 LOAD_ATTR            (animal)
+              32 LOAD_ATTR            (following)
+              35 UNARY_NOT
+              36 JUMP_IF_FALSE        (to 52)
+              39 POP_TOP
+
+132:          40 LOAD_CONST           (0)
+              43 LOAD_FAST            (self)
+              46 STORE_ATTR           (full)
+              49 JUMP_ABSOLUTE        (to 57)
+         >>   52 POP_TOP
+              53 JUMP_FORWARD         (to 57)
+         >>   56 POP_TOP
+         >>   57 LOAD_CONST           (None)
+              60 RETURN_VALUE
+
+
+# Method Name:       __init__
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  3
+# Stack size:        5
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        136
+# Constants:
+#    0: None
+#    1: '.png'
+#    2: 1
+#    3: 0
+#    4: 5
+#    5: 25
+#    6: 4
+#    7: 9
+# Names:
+#    0: pygame
+#    1: sprite
+#    2: Sprite
+#    3: __init__
+#    4: self
+#    5: containers
+#    6: name
+#    7: load_image
+#    8: img
+#    9: GRASSRECT
+#   10: clamprect
+#   11: transform
+#   12: flip
+#   13: images
+#   14: image
+#   15: get_rect
+#   16: rect
+#   17: left
+#   18: right
+#   19: random
+#   20: randint
+#   21: moveCount
+#   22: direction
+#   23: speed
+#   24: clamp
+#   25: following
+#   26: free
+# Varnames:
+#	self, name, img
+# Positional arguments:
+#	self, name
+# Local variables:
+#    2: img
+137:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (sprite)
+               6 LOAD_ATTR            (Sprite)
+               9 LOAD_ATTR            (__init__)
+              12 LOAD_FAST            (self)
+              15 LOAD_FAST            (self)
+              18 LOAD_ATTR            (containers)
+              21 CALL_FUNCTION        (2 positional, 0 named)
+              24 POP_TOP
+
+138:          25 LOAD_FAST            (name)
+              28 LOAD_FAST            (self)
+              31 STORE_ATTR           (name)
+
+139:          34 LOAD_GLOBAL          (load_image)
+              37 LOAD_FAST            (name)
+              40 LOAD_CONST           (".png")
+              43 BINARY_ADD
+              44 CALL_FUNCTION        (1 positional, 0 named)
+              47 STORE_FAST           (img)
+
+140:          50 LOAD_GLOBAL          (GRASSRECT)
+              53 LOAD_FAST            (self)
+              56 STORE_ATTR           (clamprect)
+
+141:          59 LOAD_FAST            (img)
+              62 LOAD_GLOBAL          (pygame)
+              65 LOAD_ATTR            (transform)
+              68 LOAD_ATTR            (flip)
+              71 LOAD_FAST            (img)
+              74 LOAD_CONST           (1)
+              77 LOAD_CONST           (0)
+              80 CALL_FUNCTION        (3 positional, 0 named)
+              83 BUILD_LIST           2
+              86 LOAD_FAST            (self)
+              89 STORE_ATTR           (images)
+
+142:          92 LOAD_FAST            (self)
+              95 LOAD_ATTR            (images)
+              98 LOAD_CONST           (0)
+             101 BINARY_SUBSCR
+             102 LOAD_FAST            (self)
+             105 STORE_ATTR           (image)
+
+143:         108 LOAD_FAST            (self)
+             111 LOAD_ATTR            (image)
+             114 LOAD_ATTR            (get_rect)
+             117 CALL_FUNCTION        (0 positional, 0 named)
+             120 LOAD_FAST            (self)
+             123 STORE_ATTR           (rect)
+
+144:         126 LOAD_CONST           (0)
+             129 LOAD_FAST            (self)
+             132 STORE_ATTR           (left)
+
+145:         135 LOAD_CONST           (1)
+             138 LOAD_FAST            (self)
+             141 STORE_ATTR           (right)
+
+146:         144 LOAD_GLOBAL          (random)
+             147 LOAD_ATTR            (randint)
+             150 LOAD_CONST           (5)
+             153 LOAD_CONST           (25)
+             156 CALL_FUNCTION        (2 positional, 0 named)
+             159 LOAD_FAST            (self)
+             162 STORE_ATTR           (moveCount)
+
+147:         165 LOAD_GLOBAL          (random)
+             168 LOAD_ATTR            (randint)
+             171 LOAD_CONST           (0)
+             174 LOAD_CONST           (4)
+             177 CALL_FUNCTION        (2 positional, 0 named)
+             180 LOAD_FAST            (self)
+             183 STORE_ATTR           (direction)
+
+148:         186 LOAD_GLOBAL          (random)
+             189 LOAD_ATTR            (randint)
+             192 LOAD_CONST           (4)
+             195 LOAD_CONST           (9)
+             198 CALL_FUNCTION        (2 positional, 0 named)
+             201 LOAD_FAST            (self)
+             204 STORE_ATTR           (speed)
+
+149:         207 LOAD_FAST            (self)
+             210 LOAD_ATTR            (rect)
+             213 LOAD_ATTR            (clamp)
+             216 LOAD_FAST            (self)
+             219 LOAD_ATTR            (clamprect)
+             222 CALL_FUNCTION        (1 positional, 0 named)
+             225 LOAD_FAST            (self)
+             228 STORE_ATTR           (rect)
+
+150:         231 LOAD_CONST           (0)
+             234 LOAD_FAST            (self)
+             237 STORE_ATTR           (following)
+
+151:         240 LOAD_CONST           (1)
+             243 LOAD_FAST            (self)
+             246 STORE_ATTR           (free)
+             249 LOAD_CONST           (None)
+             252 RETURN_VALUE
+
+
+# Method Name:       place
+# Filename:          spiro.pyw
+# Argument count:    3
+# Number of locals:  3
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        153
+# Constants:
+#    0: None
+# Names:
+#    0: x
+#    1: self
+#    2: rect
+#    3: centerx
+#    4: y
+#    5: centery
+# Varnames:
+#	self, x, y
+# Positional arguments:
+#	self, x, y
+154:           0 LOAD_FAST            (x)
+               3 LOAD_FAST            (self)
+               6 LOAD_ATTR            (rect)
+               9 STORE_ATTR           (centerx)
+
+155:          12 LOAD_FAST            (y)
+              15 LOAD_FAST            (self)
+              18 LOAD_ATTR            (rect)
+              21 STORE_ATTR           (centery)
+              24 LOAD_CONST           (None)
+              27 RETURN_VALUE
+
+
+# Method Name:       move
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  1
+# Stack size:        3
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        157
+# Constants:
+#    0: None
+#    1: 1
+#    2: 0
+#    3: 15
+#    4: 35
+#    5: 4
+#    6: 10
+# Names:
+#    0: self
+#    1: following
+#    2: moveCount
+#    3: direction
+#    4: DIR_UP
+#    5: rect
+#    6: move_ip
+#    7: speed
+#    8: DIR_DOWN
+#    9: DIR_LEFT
+#   10: images
+#   11: left
+#   12: image
+#   13: DIR_RIGHT
+#   14: right
+#   15: clamp
+#   16: clamprect
+#   17: random
+#   18: randint
+#   19: guide
+#   20: centerx
+#   21: centery
+#   22: bottom
+# Varnames:
+#	self
+# Positional arguments:
+#	self
+158:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (following)
+               6 UNARY_NOT
+               7 JUMP_IF_FALSE        (to 324)
+              10 POP_TOP
+
+159:          11 LOAD_FAST            (self)
+              14 LOAD_ATTR            (moveCount)
+              17 LOAD_CONST           (1)
+              20 BINARY_SUBTRACT
+              21 LOAD_FAST            (self)
+              24 STORE_ATTR           (moveCount)
+
+160:          27 LOAD_FAST            (self)
+              30 LOAD_ATTR            (moveCount)
+              33 LOAD_CONST           (0)
+              36 COMPARE_OP           (>)
+              39 JUMP_IF_FALSE        (to 278)
+              42 POP_TOP
+
+161:          43 LOAD_FAST            (self)
+              46 LOAD_ATTR            (direction)
+              49 LOAD_GLOBAL          (DIR_UP)
+              52 COMPARE_OP           (==)
+              55 JUMP_IF_FALSE        (to 85)
+              58 POP_TOP
+
+162:          59 LOAD_FAST            (self)
+              62 LOAD_ATTR            (rect)
+              65 LOAD_ATTR            (move_ip)
+         >>   68 LOAD_CONST           (0)
+              71 LOAD_FAST            (self)
+              74 LOAD_ATTR            (speed)
+              77 UNARY_NEGATIVE
+              78 CALL_FUNCTION        (2 positional, 0 named)
+              81 POP_TOP
+              82 JUMP_FORWARD         (to 251)
+         >>   85 POP_TOP
+
+163:          86 LOAD_FAST            (self)
+              89 LOAD_ATTR            (direction)
+              92 LOAD_GLOBAL          (DIR_DOWN)
+              95 COMPARE_OP           (==)
+              98 JUMP_IF_FALSE        (to 127)
+             101 POP_TOP
+
+164:         102 LOAD_FAST            (self)
+             105 LOAD_ATTR            (rect)
+             108 LOAD_ATTR            (move_ip)
+             111 LOAD_CONST           (0)
+             114 LOAD_FAST            (self)
+             117 LOAD_ATTR            (speed)
+             120 CALL_FUNCTION        (2 positional, 0 named)
+             123 POP_TOP
+             124 JUMP_FORWARD         (to 251)
+         >>  127 POP_TOP
+
+165:         128 LOAD_FAST            (self)
+             131 LOAD_ATTR            (direction)
+             134 LOAD_GLOBAL          (DIR_LEFT)
+             137 COMPARE_OP           (==)
+             140 JUMP_IF_FALSE        (to 189)
+             143 POP_TOP
+
+166:         144 LOAD_FAST            (self)
+             147 LOAD_ATTR            (images)
+             150 LOAD_FAST            (self)
+             153 LOAD_ATTR            (left)
+             156 BINARY_SUBSCR
+             157 LOAD_FAST            (self)
+             160 STORE_ATTR           (image)
+
+167:         163 LOAD_FAST            (self)
+             166 LOAD_ATTR            (rect)
+             169 LOAD_ATTR            (move_ip)
+             172 LOAD_FAST            (self)
+             175 LOAD_ATTR            (speed)
+             178 UNARY_NEGATIVE
+             179 LOAD_CONST           (0)
+             182 CALL_FUNCTION        (2 positional, 0 named)
+             185 POP_TOP
+             186 JUMP_FORWARD         (to 251)
+         >>  189 POP_TOP
+
+168:         190 LOAD_FAST            (self)
+             193 LOAD_ATTR            (direction)
+             196 LOAD_GLOBAL          (DIR_RIGHT)
+             199 COMPARE_OP           (==)
+             202 JUMP_IF_FALSE        (to 250)
+             205 POP_TOP
+
+169:         206 LOAD_FAST            (self)
+             209 LOAD_ATTR            (images)
+             212 LOAD_FAST            (self)
+             215 LOAD_ATTR            (right)
+             218 BINARY_SUBSCR
+             219 LOAD_FAST            (self)
+             222 STORE_ATTR           (image)
+
+170:         225 LOAD_FAST            (self)
+             228 LOAD_ATTR            (rect)
+             231 LOAD_ATTR            (move_ip)
+             234 LOAD_FAST            (self)
+             237 LOAD_ATTR            (speed)
+             240 LOAD_CONST           (0)
+             243 CALL_FUNCTION        (2 positional, 0 named)
+             246 POP_TOP
+             247 JUMP_FORWARD         (to 251)
+         >>  250 POP_TOP
+
+171:     >>  251 LOAD_FAST            (self)
+             254 LOAD_ATTR            (rect)
+             257 LOAD_ATTR            (clamp)
+             260 LOAD_FAST            (self)
+             263 LOAD_ATTR            (clamprect)
+             266 CALL_FUNCTION        (1 positional, 0 named)
+             269 LOAD_FAST            (self)
+             272 STORE_ATTR           (rect)
+             275 JUMP_ABSOLUTE        (to 375)
+         >>  278 POP_TOP
+
+173:         279 LOAD_GLOBAL          (random)
+             282 LOAD_ATTR            (randint)
+             285 LOAD_CONST           (15)
+             288 LOAD_CONST           (35)
+             291 CALL_FUNCTION        (2 positional, 0 named)
+             294 LOAD_FAST            (self)
+             297 STORE_ATTR           (moveCount)
+
+174:         300 LOAD_GLOBAL          (random)
+             303 LOAD_ATTR            (randint)
+             306 LOAD_CONST           (1)
+             309 LOAD_CONST           (4)
+             312 CALL_FUNCTION        (2 positional, 0 named)
+             315 LOAD_FAST            (self)
+             318 STORE_ATTR           (direction)
+             321 JUMP_FORWARD         (to 375)
+             324 POP_TOP
+
+176:         325 LOAD_FAST            (self)
+             328 LOAD_ATTR            (guide)
+             331 LOAD_ATTR            (rect)
+             334 LOAD_ATTR            (centerx)
+             337 LOAD_CONST           (10)
+             340 BINARY_ADD
+             341 LOAD_FAST            (self)
+             344 LOAD_ATTR            (rect)
+             347 STORE_ATTR           (centerx)
+
+177:         350 LOAD_FAST            (self)
+             353 LOAD_ATTR            (guide)
+             356 LOAD_ATTR            (rect)
+             359 LOAD_ATTR            (centery)
+             362 LOAD_CONST           (10)
+             365 BINARY_SUBTRACT
+             366 LOAD_FAST            (self)
+             369 LOAD_ATTR            (rect)
+             372 STORE_ATTR           (bottom)
+         >>  375 LOAD_CONST           (None)
+             378 RETURN_VALUE
+
+
+# Method Name:       follow
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  3
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        179
+# Constants:
+#    0: None
+#    1: 1
+#    2: 0
+# Names:
+#    0: self
+#    1: free
+#    2: following
+#    3: guide
+#    4: get_sound
+#    5: name
+#    6: sound
+#    7: play
+# Varnames:
+#	self, guide, sound
+# Positional arguments:
+#	self, guide
+# Local variables:
+#    2: sound
+180:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (free)
+               6 JUMP_IF_FALSE        (to 17)
+               9 POP_TOP
+              10 LOAD_FAST            (self)
+              13 LOAD_ATTR            (following)
+              16 UNARY_NOT
+         >>   17 JUMP_IF_FALSE        (to 71)
+              20 POP_TOP
+
+181:          21 LOAD_CONST           (1)
+              24 LOAD_FAST            (self)
+              27 STORE_ATTR           (following)
+
+182:          30 LOAD_FAST            (guide)
+              33 LOAD_FAST            (self)
+              36 STORE_ATTR           (guide)
+
+183:          39 LOAD_GLOBAL          (get_sound)
+              42 LOAD_FAST            (self)
+              45 LOAD_ATTR            (name)
+              48 CALL_FUNCTION        (1 positional, 0 named)
+              51 STORE_FAST           (sound)
+
+184:          54 LOAD_FAST            (sound)
+              57 LOAD_ATTR            (play)
+              60 CALL_FUNCTION        (0 positional, 0 named)
+              63 POP_TOP
+
+185:          64 LOAD_CONST           (1)
+              67 RETURN_VALUE
+              68 JUMP_FORWARD         (to 76)
+         >>   71 POP_TOP
+
+187:          72 LOAD_CONST           (0)
+              75 RETURN_VALUE
+         >>   76 LOAD_CONST           (None)
+              79 RETURN_VALUE
+
+
+# Method Name:       lockup
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  2
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        189
+# Constants:
+#    0: None
+#    1: 1
+#    2: 0
+# Names:
+#    0: self
+#    1: following
+#    2: cage
+#    3: lockup
+# Varnames:
+#	self, cage
+# Positional arguments:
+#	self, cage
+190:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (following)
+               6 JUMP_IF_FALSE        (to 48)
+               9 POP_TOP
+
+191:          10 LOAD_FAST            (cage)
+              13 LOAD_ATTR            (lockup)
+              16 LOAD_FAST            (self)
+              19 CALL_FUNCTION        (1 positional, 0 named)
+              22 LOAD_CONST           (1)
+              25 COMPARE_OP           (==)
+              28 JUMP_IF_FALSE        (to 44)
+              31 POP_TOP
+
+192:          32 LOAD_CONST           (0)
+              35 LOAD_FAST            (self)
+              38 STORE_ATTR           (following)
+              41 JUMP_ABSOLUTE        (to 53)
+         >>   44 POP_TOP
+              45 JUMP_FORWARD         (to 53)
+         >>   48 POP_TOP
+
+194:          49 LOAD_CONST           (0)
+              52 RETURN_VALUE
+         >>   53 LOAD_CONST           (None)
+              56 RETURN_VALUE
+
+
+# Method Name:       __init__
+# Filename:          spiro.pyw
+# Argument count:    3
+# Number of locals:  4
+# Stack size:        4
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        198
+# Constants:
+#    0: None
+#    1: 6
+#    2: 120
+#    3: 'cage.png'
+#    4: 0
+#    5: 255
+# Names:
+#    0: pygame
+#    1: sprite
+#    2: Sprite
+#    3: __init__
+#    4: self
+#    5: containers
+#    6: animal
+#    7: name
+#    8: SCREENRECT
+#    9: width
+#   10: size
+#   11: load_image
+#   12: image
+#   13: set_colorkey
+#   14: get_rect
+#   15: rect
+#   16: number
+#   17: left
+#   18: height
+#   19: bottom
+#   20: clamp
+#   21: full
+# Varnames:
+#	self, animal, number, size
+# Positional arguments:
+#	self, animal, number
+# Local variables:
+#    3: size
+199:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (sprite)
+               6 LOAD_ATTR            (Sprite)
+               9 LOAD_ATTR            (__init__)
+              12 LOAD_FAST            (self)
+              15 LOAD_FAST            (self)
+              18 LOAD_ATTR            (containers)
+              21 CALL_FUNCTION        (2 positional, 0 named)
+              24 POP_TOP
+
+200:          25 LOAD_FAST            (animal)
+              28 LOAD_ATTR            (name)
+              31 LOAD_FAST            (self)
+              34 STORE_ATTR           (name)
+
+201:          37 LOAD_GLOBAL          (SCREENRECT)
+              40 LOAD_ATTR            (width)
+              43 LOAD_CONST           (6)
+              46 BINARY_DIVIDE
+              47 LOAD_CONST           (120)
+              50 BUILD_TUPLE          2
+              53 STORE_FAST           (size)
+
+202:          56 LOAD_GLOBAL          (load_image)
+              59 LOAD_CONST           ("cage.png")
+              62 CALL_FUNCTION        (1 positional, 0 named)
+              65 LOAD_FAST            (self)
+              68 STORE_ATTR           (image)
+
+203:          71 LOAD_FAST            (self)
+              74 LOAD_ATTR            (image)
+              77 LOAD_ATTR            (set_colorkey)
+              80 LOAD_CONST           (0)
+              83 LOAD_CONST           (255)
+              86 LOAD_CONST           (0)
+              89 BUILD_TUPLE          3
+              92 CALL_FUNCTION        (1 positional, 0 named)
+              95 POP_TOP
+
+204:          96 LOAD_FAST            (self)
+              99 LOAD_ATTR            (image)
+             102 LOAD_ATTR            (get_rect)
+             105 CALL_FUNCTION        (0 positional, 0 named)
+             108 LOAD_FAST            (self)
+             111 STORE_ATTR           (rect)
+
+206:         114 LOAD_FAST            (size)
+             117 LOAD_CONST           (0)
+             120 BINARY_SUBSCR
+             121 LOAD_FAST            (number)
+             124 BINARY_MULTIPLY
+             125 LOAD_FAST            (self)
+             128 LOAD_ATTR            (rect)
+             131 STORE_ATTR           (left)
+
+207:         134 LOAD_GLOBAL          (SCREENRECT)
+             137 LOAD_ATTR            (height)
+             140 LOAD_FAST            (self)
+             143 LOAD_ATTR            (rect)
+             146 STORE_ATTR           (bottom)
+
+208:         149 LOAD_FAST            (self)
+             152 LOAD_ATTR            (rect)
+             155 LOAD_ATTR            (clamp)
+             158 LOAD_GLOBAL          (SCREENRECT)
+             161 CALL_FUNCTION        (1 positional, 0 named)
+             164 LOAD_FAST            (self)
+             167 STORE_ATTR           (rect)
+
+209:         170 LOAD_CONST           (0)
+             173 LOAD_FAST            (self)
+             176 STORE_ATTR           (full)
+             179 LOAD_CONST           (None)
+             182 RETURN_VALUE
+
+
+# Method Name:       lockup
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  3
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        211
+# Constants:
+#    0: None
+#    1: 1
+#    2: 0
+#    3: 'good_job'
+#    4: 'wrong_cage'
+#    5: 2
+# Names:
+#    0: self
+#    1: full
+#    2: animal
+#    3: name
+#    4: rect
+#    5: clamprect
+#    6: free
+#    7: pygame
+#    8: mixer
+#    9: get_busy
+#   10: get_sound
+#   11: sound
+#   12: play
+# Varnames:
+#	self, animal, sound
+# Positional arguments:
+#	self, animal
+# Local variables:
+#    2: sound
+212:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (full)
+               6 UNARY_NOT
+               7 JUMP_IF_FALSE        (to 176)
+              10 POP_TOP
+
+213:          11 LOAD_FAST            (animal)
+              14 LOAD_ATTR            (name)
+              17 LOAD_FAST            (self)
+              20 LOAD_ATTR            (name)
+              23 COMPARE_OP           (==)
+              26 JUMP_IF_FALSE        (to 125)
+              29 POP_TOP
+
+214:          30 LOAD_CONST           (1)
+              33 LOAD_FAST            (self)
+              36 STORE_ATTR           (full)
+
+215:          39 LOAD_FAST            (animal)
+              42 LOAD_FAST            (self)
+              45 STORE_ATTR           (animal)
+
+216:          48 LOAD_FAST            (self)
+              51 LOAD_ATTR            (rect)
+              54 LOAD_FAST            (self)
+              57 LOAD_ATTR            (animal)
+              60 STORE_ATTR           (clamprect)
+
+217:          63 LOAD_CONST           (0)
+              66 LOAD_FAST            (self)
+              69 LOAD_ATTR            (animal)
+              72 STORE_ATTR           (free)
+
+218:          75 LOAD_GLOBAL          (pygame)
+              78 LOAD_ATTR            (mixer)
+              81 LOAD_ATTR            (get_busy)
+              84 CALL_FUNCTION        (0 positional, 0 named)
+              87 UNARY_NOT
+              88 JUMP_IF_FALSE        (to 117)
+              91 POP_TOP
+
+219:          92 LOAD_GLOBAL          (get_sound)
+              95 LOAD_CONST           ("good_job")
+              98 CALL_FUNCTION        (1 positional, 0 named)
+             101 STORE_FAST           (sound)
+
+220:         104 LOAD_FAST            (sound)
+             107 LOAD_ATTR            (play)
+             110 CALL_FUNCTION        (0 positional, 0 named)
+             113 POP_TOP
+             114 JUMP_FORWARD         (to 118)
+         >>  117 POP_TOP
+
+221:     >>  118 LOAD_CONST           (1)
+             121 RETURN_VALUE
+             122 JUMP_ABSOLUTE        (to 181)
+         >>  125 POP_TOP
+
+223:         126 LOAD_GLOBAL          (pygame)
+             129 LOAD_ATTR            (mixer)
+             132 LOAD_ATTR            (get_busy)
+             135 CALL_FUNCTION        (0 positional, 0 named)
+             138 UNARY_NOT
+             139 JUMP_IF_FALSE        (to 172)
+             142 POP_TOP
+
+224:         143 LOAD_GLOBAL          (get_sound)
+             146 LOAD_CONST           ("wrong_cage")
+             149 CALL_FUNCTION        (1 positional, 0 named)
+             152 STORE_FAST           (sound)
+
+225:         155 LOAD_FAST            (sound)
+             158 LOAD_ATTR            (play)
+             161 CALL_FUNCTION        (0 positional, 0 named)
+             164 POP_TOP
+
+226:         165 LOAD_CONST           (2)
+             168 RETURN_VALUE
+             169 JUMP_ABSOLUTE        (to 181)
+         >>  172 POP_TOP
+             173 JUMP_FORWARD         (to 181)
+         >>  176 POP_TOP
+
+228:         177 LOAD_CONST           (0)
+             180 RETURN_VALUE
+         >>  181 LOAD_CONST           (None)
+             184 RETURN_VALUE
+
+
+# Method Name:       unlock
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  1
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        230
+# Constants:
+#    0: None
+#    1: 0
+#    2: 1
+# Names:
+#    0: self
+#    1: full
+#    2: GRASSRECT
+#    3: animal
+#    4: clamprect
+#    5: free
+# Varnames:
+#	self
+# Positional arguments:
+#	self
+231:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (full)
+               6 JUMP_IF_FALSE        (to 46)
+               9 POP_TOP
+
+232:          10 LOAD_CONST           (0)
+              13 LOAD_FAST            (self)
+              16 STORE_ATTR           (full)
+
+233:          19 LOAD_GLOBAL          (GRASSRECT)
+              22 LOAD_FAST            (self)
+              25 LOAD_ATTR            (animal)
+              28 STORE_ATTR           (clamprect)
+
+234:          31 LOAD_CONST           (1)
+              34 LOAD_FAST            (self)
+              37 LOAD_ATTR            (animal)
+              40 STORE_ATTR           (free)
+              43 JUMP_FORWARD         (to 47)
+         >>   46 POP_TOP
+         >>   47 LOAD_CONST           (None)
+              50 RETURN_VALUE
+
+
+# Method Name:       hasCorrectAnimal
+# Filename:          spiro.pyw
+# Argument count:    1
+# Number of locals:  1
+# Stack size:        2
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        236
+# Constants:
+#    0: None
+#    1: 1
+#    2: 0
+# Names:
+#    0: self
+#    1: full
+#    2: animal
+#    3: name
+# Varnames:
+#	self
+# Positional arguments:
+#	self
+237:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (full)
+               6 JUMP_IF_FALSE        (to 28)
+               9 POP_TOP
+              10 LOAD_FAST            (self)
+              13 LOAD_ATTR            (animal)
+              16 LOAD_ATTR            (name)
+              19 LOAD_FAST            (self)
+              22 LOAD_ATTR            (name)
+              25 COMPARE_OP           (==)
+         >>   28 JUMP_IF_FALSE        (to 39)
+              31 POP_TOP
+
+238:          32 LOAD_CONST           (1)
+              35 RETURN_VALUE
+              36 JUMP_FORWARD         (to 44)
+         >>   39 POP_TOP
+
+240:          40 LOAD_CONST           (0)
+              43 RETURN_VALUE
+         >>   44 LOAD_CONST           (None)
+              47 RETURN_VALUE
+
+
+# Method Name:       __init__
+# Filename:          spiro.pyw
+# Argument count:    2
+# Number of locals:  3
+# Stack size:        3
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        244
+# Constants:
+#    0: None
+#    1: 6
+#    2: 30
+# Names:
+#    0: pygame
+#    1: sprite
+#    2: Sprite
+#    3: __init__
+#    4: self
+#    5: containers
+#    6: SCREENRECT
+#    7: width
+#    8: size
+#    9: render_cage_text
+#   10: cage
+#   11: name
+#   12: image
+#   13: rect
+#   14: center
+# Varnames:
+#	self, cage, size
+# Positional arguments:
+#	self, cage
+# Local variables:
+#    2: size
+245:           0 LOAD_GLOBAL          (pygame)
+               3 LOAD_ATTR            (sprite)
+               6 LOAD_ATTR            (Sprite)
+               9 LOAD_ATTR            (__init__)
+              12 LOAD_FAST            (self)
+              15 LOAD_FAST            (self)
+              18 LOAD_ATTR            (containers)
+              21 CALL_FUNCTION        (2 positional, 0 named)
+              24 POP_TOP
+
+246:          25 LOAD_GLOBAL          (SCREENRECT)
+              28 LOAD_ATTR            (width)
+              31 LOAD_CONST           (6)
+              34 BINARY_DIVIDE
+              35 LOAD_CONST           (30)
+              38 BUILD_TUPLE          2
+              41 STORE_FAST           (size)
+
+247:          44 LOAD_GLOBAL          (render_cage_text)
+              47 LOAD_FAST            (size)
+              50 LOAD_FAST            (cage)
+              53 LOAD_ATTR            (name)
+              56 CALL_FUNCTION        (2 positional, 0 named)
+              59 UNPACK_SEQUENCE      2
+              62 LOAD_FAST            (self)
+              65 STORE_ATTR           (image)
+              68 LOAD_FAST            (self)
+              71 STORE_ATTR           (rect)
+
+248:          74 LOAD_FAST            (cage)
+              77 LOAD_ATTR            (rect)
+              80 LOAD_ATTR            (center)
+              83 LOAD_FAST            (self)
+              86 LOAD_ATTR            (rect)
+              89 STORE_ATTR           (center)
+              92 LOAD_CONST           (None)
+              95 RETURN_VALUE
+
+
+# Method Name:       play
+# Filename:          spiro.pyw
+# Argument count:    0
+# Number of locals:  1
+# Stack size:        1
+# Flags:             0x00000047 (NOFREE | VARARGS | NEWLOCALS | OPTIMIZED)
+# First Line:        64
+# Constants:
+#    0: None
+#    1: 'dummy'
+# Varnames:
+#	args
+# Local variables:
+#    0: args
+ 65:           0 LOAD_CONST           ("dummy")
+               3 PRINT_ITEM
+               4 PRINT_NEWLINE
+               5 LOAD_CONST           (None)
+               8 RETURN_VALUE
+

@@ -1,0 +1,16 @@
+# Original CD-ROM reference; preserve separately from the playable editions.
+/CD_ROM/
+
+# Local system and development files.
+.DS_Store
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+
+# Local browser-test artifacts.
+playwright-report/
+test-results/

@@ -1,0 +1,367 @@
+# pydisasm version 6.1.8
+# Python bytecode 2.3 (62021)
+# Disassembled from Python 3.11.15 (main, Jun 23 2026, 15:46:51) [Clang 22.1.3 ]
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        3
+# Flags:             0x00000040 (NOFREE)
+# First Line:        21
+# Constants:
+#    0: None
+#    1: 'windows_exe'
+#    2: 'Stderr'
+#    3: <Code2 code object Stderr at 0x106550250, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 23
+#    4: 'Blackhole'
+#    5: <Code2 code object Blackhole at 0x106550d50, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 50
+#    6: <Code2 code object fake_getline at 0x106551210, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 65
+# Names:
+#    0: sys
+#    1: frozen
+#    2: object
+#    3: Stderr
+#    4: stderr
+#    5: _MessageBox
+#    6: Blackhole
+#    7: stdout
+#    8: linecache
+#    9: fake_getline
+#   10: getline
+#   11: orig_getline
+# Varnames:
+#	fake_getline, Blackhole, sys, linecache, Stderr
+# Local variables:
+#    0: fake_getline
+#    1: Blackhole
+#    2: sys
+#    3: linecache
+#    4: Stderr
+ 21:           0 LOAD_CONST           (None)
+               3 IMPORT_NAME          (sys)
+               6 STORE_NAME           (sys)
+
+ 22:           9 LOAD_NAME            (sys)
+              12 LOAD_ATTR            (frozen)
+              15 LOAD_CONST           ("windows_exe")
+              18 COMPARE_OP           (==)
+              21 JUMP_IF_FALSE        (to 108)
+              24 POP_TOP
+
+ 23:          25 LOAD_CONST           ("Stderr")
+              28 LOAD_NAME            (object)
+              31 BUILD_TUPLE          1
+              34 LOAD_CONST           (<Code2 code object Stderr at 0x106550250, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 23)
+              37 MAKE_FUNCTION        (0 default parameters)
+              40 CALL_FUNCTION        (0 positional, 0 named)
+              43 BUILD_CLASS
+              44 STORE_NAME           (Stderr)
+
+ 46:          47 LOAD_NAME            (Stderr)
+              50 CALL_FUNCTION        (0 positional, 0 named)
+              53 LOAD_NAME            (sys)
+              56 STORE_ATTR           (stderr)
+
+ 47:          59 LOAD_NAME            (sys)
+              62 DELETE_ATTR          (_MessageBox)
+
+ 48:          65 DELETE_NAME          (Stderr)
+
+ 50:          68 LOAD_CONST           ("Blackhole")
+              71 LOAD_NAME            (object)
+              74 BUILD_TUPLE          1
+              77 LOAD_CONST           (<Code2 code object Blackhole at 0x106550d50, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 50)
+              80 MAKE_FUNCTION        (0 default parameters)
+              83 CALL_FUNCTION        (0 positional, 0 named)
+              86 BUILD_CLASS
+              87 STORE_NAME           (Blackhole)
+
+ 54:          90 LOAD_NAME            (Blackhole)
+              93 CALL_FUNCTION        (0 positional, 0 named)
+              96 LOAD_NAME            (sys)
+              99 STORE_ATTR           (stdout)
+
+ 55:         102 DELETE_NAME          (Blackhole)
+             105 JUMP_FORWARD         (to 109)
+         >>  108 POP_TOP
+
+ 56:     >>  109 DELETE_NAME          (sys)
+
+ 64:         112 LOAD_CONST           (None)
+             115 IMPORT_NAME          (linecache)
+             118 STORE_NAME           (linecache)
+
+ 65:         121 LOAD_CONST           (<Code2 code object fake_getline at 0x106551210, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 65)
+             124 MAKE_FUNCTION        (0 default parameters)
+             127 STORE_NAME           (fake_getline)
+
+ 67:         130 LOAD_NAME            (linecache)
+             133 LOAD_ATTR            (getline)
+             136 LOAD_NAME            (linecache)
+             139 STORE_ATTR           (orig_getline)
+
+ 68:         142 LOAD_NAME            (fake_getline)
+             145 LOAD_NAME            (linecache)
+             148 STORE_ATTR           (getline)
+
+ 70:         151 DELETE_NAME          (linecache)
+             154 DELETE_NAME          (fake_getline)
+             157 LOAD_CONST           (None)
+             160 RETURN_VALUE
+
+
+# Method Name:       Stderr
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        2
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        23
+# Constants:
+#    0: None
+#    1: 0
+#    2: <Code2 code object write at 0x106547c90, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 27
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: softspace
+#    3: None
+#    4: _file
+#    5: _error
+#    6: sys
+#    7: _MessageBox
+#    8: write
+ 23:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+ 24:           6 LOAD_CONST           (0)
+               9 STORE_NAME           (softspace)
+
+ 25:          12 LOAD_NAME            (None)
+              15 STORE_NAME           (_file)
+
+ 26:          18 LOAD_NAME            (None)
+              21 STORE_NAME           (_error)
+
+ 27:          24 LOAD_NAME            (sys)
+              27 LOAD_ATTR            (_MessageBox)
+              30 LOAD_CONST           (<Code2 code object write at 0x106547c90, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 27)
+              33 MAKE_FUNCTION        (1 default parameters)
+              36 STORE_NAME           (write)
+              39 LOAD_LOCALS
+              40 RETURN_VALUE
+
+
+# Method Name:       Blackhole
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    0
+# Number of locals:  0
+# Stack size:        1
+# Flags:             0x00000042 (NOFREE | NEWLOCALS)
+# First Line:        50
+# Constants:
+#    0: None
+#    1: 0
+#    2: <Code2 code object write at 0x106550950, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 52
+# Names:
+#    0: __name__
+#    1: __module__
+#    2: softspace
+#    3: write
+ 50:           0 LOAD_GLOBAL          (__name__)
+               3 STORE_NAME           (__module__)
+
+ 51:           6 LOAD_CONST           (0)
+               9 STORE_NAME           (softspace)
+
+ 52:          12 LOAD_CONST           (<Code2 code object write at 0x106550950, file c:\python23\lib\site-packages\py2exe\boot_common.py>, line 52)
+              15 MAKE_FUNCTION        (0 default parameters)
+              18 STORE_NAME           (write)
+              21 LOAD_LOCALS
+              22 RETURN_VALUE
+
+
+# Method Name:       fake_getline
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    2
+# Number of locals:  2
+# Stack size:        1
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        65
+# Constants:
+#    0: None
+#    1: ''
+# Varnames:
+#	filename, lineno
+# Positional arguments:
+#	filename, lineno
+ 66:           0 LOAD_CONST           ("")
+               3 RETURN_VALUE
+               4 LOAD_CONST           (None)
+               7 RETURN_VALUE
+
+
+# Method Name:       write
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    3
+# Number of locals:  6
+# Stack size:        6
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        27
+# Constants:
+#    0: None
+#    1: '.log'
+#    2: 'a'
+#    3: 0
+#    4: "The logfile '%s' could be opened:\n %s"
+#    5: 'Errors occurred'
+#    6: "See the logfile '%s' for details"
+# Names:
+#    0: self
+#    1: _file
+#    2: None
+#    3: _error
+#    4: sys
+#    5: executable
+#    6: fname
+#    7: open
+#    8: Exception
+#    9: details
+#   10: atexit
+#   11: register
+#   12: alert
+#   13: write
+#   14: text
+#   15: flush
+# Varnames:
+#	self, text, alert, atexit, details, fname
+# Positional arguments:
+#	self, text, alert
+# Local variables:
+#    3: atexit
+#    4: details
+#    5: fname
+ 28:           0 LOAD_FAST            (self)
+               3 LOAD_ATTR            (_file)
+               6 LOAD_GLOBAL          (None)
+               9 COMPARE_OP           (is)
+              12 JUMP_IF_FALSE        (to 28)
+              15 POP_TOP
+              16 LOAD_FAST            (self)
+              19 LOAD_ATTR            (_error)
+              22 LOAD_GLOBAL          (None)
+              25 COMPARE_OP           (is)
+         >>   28 JUMP_IF_FALSE        (to 179)
+              31 POP_TOP
+
+ 29:          32 LOAD_GLOBAL          (sys)
+              35 LOAD_ATTR            (executable)
+              38 LOAD_CONST           (".log")
+              41 BINARY_ADD
+              42 STORE_FAST           (fname)
+
+ 30:          45 SETUP_EXCEPT         (to 70)
+
+ 31:          48 LOAD_GLOBAL          (open)
+              51 LOAD_FAST            (fname)
+              54 LOAD_CONST           ("a")
+              57 CALL_FUNCTION        (2 positional, 0 named)
+              60 LOAD_FAST            (self)
+              63 STORE_ATTR           (_file)
+              66 POP_BLOCK
+              67 JUMP_FORWARD         (to 141)
+
+ 32:     >>   70 DUP_TOP
+              71 LOAD_GLOBAL          (Exception)
+              74 COMPARE_OP           (exception-match)
+              77 JUMP_IF_FALSE        (to 139)
+              80 POP_TOP
+              81 POP_TOP
+              82 STORE_FAST           (details)
+              85 POP_TOP
+
+ 33:          86 LOAD_FAST            (details)
+              89 LOAD_FAST            (self)
+              92 STORE_ATTR           (_error)
+
+ 34:          95 LOAD_CONST           (None)
+              98 IMPORT_NAME          (atexit)
+             101 STORE_FAST           (atexit)
+
+ 35:         104 LOAD_FAST            (atexit)
+             107 LOAD_ATTR            (register)
+             110 LOAD_FAST            (alert)
+             113 LOAD_CONST           (0)
+
+ 36:         116 LOAD_CONST           ("The logfile '%s' could be opened:\n %s")
+             119 LOAD_FAST            (fname)
+             122 LOAD_FAST            (details)
+             125 BUILD_TUPLE          2
+             128 BINARY_MODULO
+
+ 37:         129 LOAD_CONST           ("Errors occurred")
+             132 CALL_FUNCTION        (4 positional, 0 named)
+             135 POP_TOP
+             136 JUMP_ABSOLUTE        (to 180)
+         >>  139 POP_TOP
+             140 END_FINALLY
+
+ 39:     >>  141 LOAD_CONST           (None)
+             144 IMPORT_NAME          (atexit)
+             147 STORE_FAST           (atexit)
+
+ 40:         150 LOAD_FAST            (atexit)
+             153 LOAD_ATTR            (register)
+             156 LOAD_FAST            (alert)
+             159 LOAD_CONST           (0)
+
+ 41:         162 LOAD_CONST           ("See the logfile '%s' for details")
+             165 LOAD_FAST            (fname)
+             168 BINARY_MODULO
+
+ 42:         169 LOAD_CONST           ("Errors occurred")
+             172 CALL_FUNCTION        (4 positional, 0 named)
+             175 POP_TOP
+             176 JUMP_FORWARD         (to 180)
+         >>  179 POP_TOP
+
+ 43:     >>  180 LOAD_FAST            (self)
+             183 LOAD_ATTR            (_file)
+             186 LOAD_GLOBAL          (None)
+             189 COMPARE_OP           (is-not)
+             192 JUMP_IF_FALSE        (to 228)
+             195 POP_TOP
+
+ 44:         196 LOAD_FAST            (self)
+             199 LOAD_ATTR            (_file)
+             202 LOAD_ATTR            (write)
+             205 LOAD_FAST            (text)
+             208 CALL_FUNCTION        (1 positional, 0 named)
+             211 POP_TOP
+
+ 45:         212 LOAD_FAST            (self)
+             215 LOAD_ATTR            (_file)
+             218 LOAD_ATTR            (flush)
+             221 CALL_FUNCTION        (0 positional, 0 named)
+             224 POP_TOP
+             225 JUMP_FORWARD         (to 229)
+         >>  228 POP_TOP
+         >>  229 LOAD_CONST           (None)
+             232 RETURN_VALUE
+
+
+# Method Name:       write
+# Filename:          c:\python23\lib\site-packages\py2exe\boot_common.py
+# Argument count:    2
+# Number of locals:  2
+# Stack size:        1
+# Flags:             0x00000043 (NOFREE | NEWLOCALS | OPTIMIZED)
+# First Line:        52
+# Constants:
+#    0: None
+# Varnames:
+#	self, text
+# Positional arguments:
+#	self, text
+ 53:           0 LOAD_CONST           (None)
+               3 RETURN_VALUE
+
