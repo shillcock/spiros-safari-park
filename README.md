@@ -11,8 +11,9 @@ npm start
 
 Open **http://localhost:8000** to go straight to Enhanced at `/v2/`. Original
 lives at `/v1/`, and the **3D edition** lives at `/v3/`. All three pages have the
-same header with **Original / Enhanced / 3D** navigation tabs. The active edition
-is highlighted; switching tabs starts a fresh game in that edition. The header
+same header with **Original / Enhanced / 3D** navigation tabs beside the title.
+On phones, a native version dropdown replaces the tabs to keep the header compact.
+The active edition is highlighted; switching versions starts a fresh game. The header
 sits outside the edition-specific content so its position stays consistent.
 There is no chooser or wrapper page. Independent HTML/CSS copies are checked by
 `test/edition-header.test.js` to prevent visual drift without shared runtime code.

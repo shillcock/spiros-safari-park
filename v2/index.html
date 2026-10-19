@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spiro’s Safari Park: Enhanced</title>
-  <link rel="stylesheet" href="style.css?v=touch-controls-3">
+  <link rel="stylesheet" href="style.css?v=mobile-header-4">
 </head>
 <body>
   <header class="site-header">
@@ -14,6 +14,11 @@
       <a href="../v2/" aria-current="page">Enhanced</a>
       <a href="../v3/">3D</a>
     </nav>
+    <select class="edition-select" aria-label="Game version" onchange="location.href = this.value" onkeydown="event.stopPropagation()" onkeyup="event.stopPropagation()">
+      <option value="../v1/">Original</option>
+      <option value="../v2/" selected>Enhanced</option>
+      <option value="../v3/">3D</option>
+    </select>
   </header>
   <main>
     <div class="stage">

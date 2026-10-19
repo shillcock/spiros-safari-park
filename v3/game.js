@@ -515,7 +515,7 @@ async function start() {
 }
 const input = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' };
 const isSpace = event => event.code === 'Space' || event.key === ' ' || event.key === 'Spacebar';
-const editingText = target => target.matches('textarea, [contenteditable], input:not([type="range"]):not([type="button"]):not([type="checkbox"])');
+const editingText = target => target.matches('select, textarea, [contenteditable], input:not([type="range"]):not([type="button"]):not([type="checkbox"])');
 window.addEventListener('keydown', event => {
   if (editingText(event.target)) return;
   // Keep native button/link activation; Space on the canvas/body is a game action.

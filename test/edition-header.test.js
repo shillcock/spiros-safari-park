@@ -12,7 +12,9 @@ test('all editions have the same navigation and styling, with only the current t
     assert.equal((header.match(/aria-current="page"/g) || []).length, 1);
     assert.ok(header.includes(`href="../${version}/" aria-current="page"`));
     assert.ok(html.indexOf(header) < html.indexOf('<main>'));
-    const normalized = header.replace(' aria-current="page"', '');
+    assert.equal((header.match(/ selected/g) || []).length, 1);
+    assert.ok(header.includes(`value="../${version}/" selected`));
+    const normalized = header.replace(' aria-current="page"', '').replace(' selected', '');
     const styles = css.match(/\/\* Identical edition header[\s\S]*?(?=footer \{)/)?.[0];
     assert.ok(styles);
     expectedHeader ??= normalized; expectedStyles ??= styles;
