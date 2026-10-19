@@ -27,18 +27,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test both editions and verify Original preservation
+      - name: Test all editions and verify Original preservation
         run: npm test
       - name: Stage playable files only
         shell: bash
         run: |
-          mkdir -p _site/v1 _site/v2
+          mkdir -p _site/v1 _site/v2 _site/v3
           cp index.html _site/
           for version in v1 v2; do
             cp "$version"/{index.html,style.css,game.js,game-model.js} "_site/$version/"
             cp -R "$version/assets" "_site/$version/"
           done
           cp v2/presentation.js v2/walk-animation.js _site/v2/
+          cp v3/{index.html,style.css,game.js,game-rules.js,toy-animals.js} _site/v3/
+          cp -R v3/assets v3/vendor _site/v3/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
