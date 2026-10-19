@@ -7,8 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <h1>Spiro’s Safari Park</h1>
+    <nav class="edition-nav" aria-label="Game version">
+      <a href="../v1/">Original</a>
+      <a href="../v2/" aria-current="page">Enhanced</a>
+      <a href="../v3/">3D</a>
+    </nav>
+  </header>
   <main>
-    <header><h1>Spiro’s Safari Park</h1><nav class="edition-nav" aria-label="Game version"><span>Enhanced edition</span><a class="version-switch" href="../v1/">Play Original</a><a class="version-switch" href="../v3/">Play 3D</a></nav></header>
     <div class="stage">
       <canvas id="game" width="800" height="600" tabindex="0" aria-label="Safari Park game. Use arrow keys or WASD to catch animals and bring them to their cages."></canvas>
       <button id="overlay" class="overlay" disabled>Loading the park…</button>
