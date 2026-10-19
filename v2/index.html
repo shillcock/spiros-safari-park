@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spiro’s Safari Park — Enhanced</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header><h1>Spiro’s Safari Park</h1><nav class="edition-nav" aria-label="Game version"><span>Enhanced edition</span><a class="version-switch" href="../v1/">Play Original</a></nav></header>
+    <div class="stage">
+      <canvas id="game" width="800" height="600" tabindex="0" aria-label="Safari Park game. Use arrow keys or WASD to catch animals and bring them to their cages."></canvas>
+      <button id="overlay" class="overlay" disabled>Loading the park…</button>
+    </div>
+    <div class="toolbar">
+      <p id="status" role="status">Loading original artwork and sounds…</p>
+      <div class="actions">
+        <button id="pause" disabled>Pause</button>
+        <button id="mute" aria-pressed="false">Mute</button>
+        <button id="restart" disabled>Restart</button>
+      </div>
+    </div>
+    <div class="touch" aria-label="Movement controls">
+      <button data-direction="up" aria-label="Move up">▲</button>
+      <div><button data-direction="left" aria-label="Move left">◀</button><button data-direction="down" aria-label="Move down">▼</button><button data-direction="right" aria-label="Move right">▶</button></div>
+    </div>
+    <p class="instructions">Arrow keys or WASD to move. Touch an animal to pick it up, then carry it to its matching cage. P or Escape to pause.</p>
+    <footer>Original game idea, artwork, and sound effects by Spiro JJ Pettas, age 7.</footer>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
