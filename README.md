@@ -46,6 +46,7 @@ v2/                           Enhanced: independent copy; make improvements here
   test/, package.json
  test/                        Original snapshot checksum guard
  recovery/                    Historical decompilation and behavior notes
+ archive/                     Verified ZIP of the original CD-ROM directory
 ```
 
 **Do not change `v1/` when improving Enhanced.** The editions share no
@@ -71,8 +72,12 @@ just to accommodate Enhanced development.
 ## Assets and publishing
 
 Publish the root redirect and both edition directories on any static website.
-Neither edition depends on `CD_ROM/` or `recovery/`. You may remove the reference
-CD-ROM without affecting play; only rerunning `recovery/recover.py` needs it.
+Neither edition depends on `CD_ROM/`, `recovery/`, or `archive/`. The original
+CD-ROM directory is preserved in `archive/spiros-safari-park-original-cd-2004.zip`
+with a checksum and restoration instructions in `archive/README.md`. The loose
+copy was removed after verifying all 61 files. Extract the ZIP to recreate the
+ignored `CD_ROM/` directory if you want to rerun `recovery/recover.py`.
+The archive does not need to be published with the playable site.
 
 Both editions retain the original recordings and animal art, including the unused
 `art.png` drawing sheet for preservation. Original converts the cage image’s green

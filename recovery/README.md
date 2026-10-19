@@ -21,7 +21,15 @@ tested, and the output has not been exhaustively checked against disassembly.
 
 ## Reproduce
 
-From the project root, with `uv` installed:
+From the project root, first restore the archived reference files if `CD_ROM/`
+is absent (see `archive/README.md`):
+
+```sh
+(cd archive && shasum -a 256 -c SHA256SUMS)
+unzip archive/spiros-safari-park-original-cd-2004.zip
+```
+
+Then, with `uv` installed:
 
 ```sh
 uv venv --python 3.11 /tmp/spiro-recovery-venv
