@@ -87,7 +87,9 @@ checks file contents and file names against it so accidental changes are caught.
 Enhanced's presentation tests cover doors, carrying/layering, effects, replay,
 and reduced motion. Only the HTML/CSS entries in the Original checksum baseline
 were updated for the approved navigation changes, including the consistent
-three-edition tab header. Every other original file remains unchanged. Do not regenerate this baseline
+three-edition tab header, and the iOS control-selection fix. That fix only adds
+scoped selection/callout suppression in the page; game code, assets, and rules
+remain unchanged. Every other original file remains unchanged. Do not regenerate this baseline
 just to accommodate Enhanced development.
 
 ## Assets and publishing

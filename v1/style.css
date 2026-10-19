@@ -32,6 +32,14 @@ button:disabled { opacity: .6; cursor: wait; }
 .actions { display: flex; gap: 8px; }
 .instructions { color: #d5d8bf; font-size: .9rem; line-height: 1.6; }
 footer { line-height: 1.7; margin-top: 22px; }
+/* Suppress iOS selection and callouts on controls, not ordinary page text. */
+.stage, .toolbar, .touch, .touch button, .toolbar button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.toolbar button { touch-action: manipulation; }
+.touch button { touch-action: none; -webkit-tap-highlight-color: transparent; }
 .touch { display: none; text-align: center; margin: 14px auto; width: max-content; touch-action: none; user-select: none; }
 .touch button { width: 58px; height: 48px; margin: 3px; }
 @media (pointer: coarse) { .touch { display: block; } }

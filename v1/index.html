@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spiro’s Safari Park</title>
-  <link rel="stylesheet" href="style.css?v=mobile-header-4">
+  <link rel="stylesheet" href="style.css?v=original-touch-5">
 </head>
 <body>
   <header class="site-header">
@@ -40,6 +40,13 @@
     <p class="instructions">Arrow keys or WASD to move. Touch an animal to pick it up, then carry it to its matching cage. P or Escape to pause.</p>
     <footer>Original game idea, artwork, and sound effects by Spiro JJ Pettas, age 7.</footer>
   </main>
+  <script>
+    // Browser-control fix only; the preserved game code remains unchanged.
+    for (const control of document.querySelectorAll('.stage, .toolbar, .touch')) {
+      control.addEventListener('contextmenu', event => event.preventDefault());
+      control.addEventListener('selectstart', event => event.preventDefault());
+    }
+  </script>
   <script type="module" src="game.js"></script>
 </body>
 </html>
