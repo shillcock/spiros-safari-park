@@ -24,7 +24,16 @@ button:disabled { opacity: .6; cursor: wait; }
 .actions { display: flex; gap: 8px; }
 .instructions { color: #d5d8bf; font-size: .9rem; line-height: 1.6; }
 footer { line-height: 1.7; margin-top: 22px; }
-.touch { display: none; text-align: center; margin: 14px auto; width: max-content; touch-action: none; user-select: none; }
-.touch button { width: 58px; height: 48px; margin: 3px; }
+/* Safari needs the prefixed properties to suppress text selection/callouts
+   during long-held movement. Keep ordinary page text selectable. */
+.stage, .toolbar, .touch, .touch button, .toolbar button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.toolbar button { touch-action: manipulation; }
+.touch { display: none; text-align: center; margin: 14px auto; width: max-content; touch-action: none; }
+.touch button { width: 64px; height: 58px; margin: 3px; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.touch button.is-held { background: #617f3d; border-color: #f5cf63; box-shadow: inset 0 0 0 2px #f5cf63; }
 @media (pointer: coarse) { .touch { display: block; } }
 @media (max-width: 600px) { body { padding: 12px 8px; } .toolbar { flex-direction: column; align-items: stretch; } .actions { justify-content: center; } }

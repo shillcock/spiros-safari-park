@@ -12,6 +12,7 @@ const muteButton = document.querySelector('#mute');
 const asset = name => new URL(`assets/${name}`, import.meta.url).href;
 const images = {};
 const keys = new Set();
+const movementButtons = [...document.querySelectorAll('[data-direction]')];
 let game, renderer, screen = 'loading', paused = false, accumulator = 0, lastTime = 0;
 let audio, master, musicGain, music, muted = false, generation = 0, deliveryAudio = false;
 let effectGeneration = 0;
@@ -141,6 +142,9 @@ function updateStatus() {
   if (text && status.textContent !== text) status.textContent = text;
 }
 function render() {
+  for (const button of movementButtons) {
+    button.classList.toggle('is-held', screen === 'playing' && !paused && keys.has(button.dataset.direction));
+  }
   if (screen === 'loading' || screen === 'error') return;
   if (screen === 'title') ctx.drawImage(images.welcome, 0, 0);
   else if (screen === 'won') renderer.victory();
@@ -199,7 +203,12 @@ muteButton.addEventListener('click', () => {
   muteButton.textContent = muted ? 'Unmute' : 'Mute';
   muteButton.setAttribute('aria-pressed', String(muted));
 });
-for (const button of document.querySelectorAll('[data-direction]')) {
+// Limit native callout suppression to game controls, not navigation or page text.
+for (const control of document.querySelectorAll('.stage, .toolbar, .touch')) {
+  control.addEventListener('contextmenu', event => event.preventDefault());
+  control.addEventListener('selectstart', event => event.preventDefault());
+}
+for (const button of movementButtons) {
   button.addEventListener('pointerdown', event => {
     event.preventDefault();
     if (screen !== 'playing' || paused) return;
