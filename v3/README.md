@@ -32,13 +32,25 @@ lasso. Misses retract; catches reel an animal onto Spiro’s back. Walk into the
 matching cage from the field; wrong cages keep the carried animal, and you must
 step back before trying again. Return all six to win and play again.
 
+## Phone camera
+
+Phones start with the full park, then use a closer follow view after the scatter
+period (2.25x in portrait, 1.55x in wider layouts). Carrying does not pull the
+camera back on phones. Near any cage, framing looks ahead enough to include Spiro
+and nearby signs, without using the carried species or correct cage as a hint.
+**View whole park** toggles an overview; **Follow Spiro** brings the close view back.
+Restart and victory return to a wide view. Cage lettering is larger on mobile.
+Desktop framing and sign sizes are unchanged. Layout changes handle rotation.
+The view button is a camera shortcut, not another persistent gameplay option.
+
 Original recordings play on release, pickup and return. Returns play the animal
 before praise (or the final ranger message). Restart cancels pending recordings.
 The last gate gets time to close before the victory panel appears. Reduced motion
-uses static paper art, stops toy gait and automatic camera tracking, and closes
-gates immediately. Background tabs stop simulation and audio; a lost graphics
+uses static paper art, stops toy gait and animated camera transitions, and closes
+gates immediately. Desktop tracking is disabled; essential close-view tracking
+remains on phones so Spiro cannot walk off screen. Background tabs stop simulation and audio; a lost graphics
 context shows reload guidance. Mobile supports tap-to-walk and the throw button,
-although the park is easier to read on a larger screen.
+with larger nearby signs and a whole-park overview when needed.
 
 ## Structure and verification
 

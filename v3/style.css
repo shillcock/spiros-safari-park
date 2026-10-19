@@ -30,7 +30,15 @@ button:focus-visible, a:focus-visible, canvas:focus-visible { outline: 3px solid
 #viewport canvas { display: block; width: 100%; height: 100%; touch-action: none; }
 #loading { color: #293d29; position: absolute; inset: 0; display: grid; place-items: center; z-index: 3; background: #e7ecd9; padding: 40px; text-align: center; }
 #score { color: #293d29; position: absolute; top: 16px; left: 18px; padding: 9px 13px; background: #fff9e8e8; border: 1px solid #d7ca9d; border-radius: 8px; font: 700 .85rem Georgia, serif; z-index: 2; pointer-events: none; }
-#throw { position: absolute; bottom: 14px; right: 16px; z-index: 2; }
+.scene-actions { position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 2; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; }
+.scene-actions button { pointer-events: auto; min-height: 44px; touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+#throw { margin-left: auto; }
+.mobile-camera-help { display: none; }
+@media (max-width: 650px), (pointer: coarse) and (max-width: 1000px) {
+  .scene-actions button { padding: 9px 10px; font-size: .85rem; }
+  .keyboard-hint { display: none; }
+  .mobile-camera-help { display: inline; }
+}
 #victory { color: #293d29; position: absolute; top: 18%; left: 50%; transform: translateX(-50%); width: min(90%, 400px); padding: 22px; display: grid; gap: 14px; text-align: center; background: #fff9e8f5; border: 2px solid #d7b666; border-radius: 14px; box-shadow: 0 6px 30px #293d2933; }
 #victory strong { font: bold 1.5rem Georgia, serif; }
 #status { min-height: 1.7em; margin: 16px 0 5px; font-weight: 650; }

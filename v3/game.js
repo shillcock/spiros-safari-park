@@ -1,4 +1,4 @@
-// Standalone 3D edition. Perspective camera and automatic framing are fixed.
+// Standalone 3D edition. Phone framing follows closely with an overview shortcut.
 // The only game options are catching method and animal artwork.
 import * as THREE from './vendor/three.module.js';
 import { createToyAnimal } from './toy-animals.js';
@@ -15,7 +15,8 @@ const SPECIES = [
 let { animalStyle, catchMode } = readOptions(location.search);
 const facing = new THREE.Vector3(0, 0, -1);
 let lasso = null, rope, loop, aimGuide;
-let followZoom = 1;
+let followZoom = 1, overview = false;
+const mobileLayout = matchMedia('(max-width: 650px), (pointer: coarse) and (max-width: 1000px)');
 const followCenter = new THREE.Vector3(0, .2, -.5);
 const cameraBase = new THREE.Vector3();
 const viewport = document.querySelector('#viewport');
@@ -65,18 +66,23 @@ function roundedShape(w, h, radius) {
   s.quadraticCurveTo(x, y + h, x, y + h - radius); s.lineTo(x, y + radius);
   s.quadraticCurveTo(x, y, x + radius, y); return s;
 }
-function makeSign(text, width = 3.3, height = .82, fixedBoard = false) {
-  const map = texture((c, w, h) => {
+function signTexture(text, large = false) {
+  return texture((c, w, h) => {
     c.fillStyle = '#f7e9b9'; c.beginPath(); c.roundRect(3, 3, w - 6, h - 6, 14); c.fill();
     c.strokeStyle = '#9c8052'; c.lineWidth = 6; c.stroke();
-    c.fillStyle = '#3c5134'; c.font = `bold ${text.length > 10 ? 58 : 76}px Georgia`; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillStyle = '#3c5134'; c.font = `bold ${text.length > 10 ? 58 : large ? 94 : 76}px Georgia`; c.textAlign = 'center'; c.textBaseline = 'middle';
     c.fillText(text, w / 2, h / 2 + 3, w - 50);
     c.fillStyle = '#b49b69'; c.beginPath(); c.arc(18, h / 2, 5, 0, Math.PI * 2); c.arc(w - 18, h / 2, 5, 0, Math.PI * 2); c.fill();
   }, 512, 128);
+}
+function makeSign(text, width = 3.3, height = .82, fixedBoard = false) {
+  const map = signTexture(text);
   const sign = fixedBoard
     ? new THREE.Mesh(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map, transparent: true, side: THREE.DoubleSide }))
     : new THREE.Sprite(new THREE.SpriteMaterial({ map, depthTest: false, depthWrite: false }));
   if (!fixedBoard) sign.scale.set(width, height, 1);
+  sign.userData.desktopMap = map;
+  sign.userData.mobileMap = text.length <= 10 ? signTexture(text, true) : map;
   scene.add(sign); return sign;
 }
 const starMap = texture((c, w, h) => {
@@ -170,12 +176,12 @@ function buildCage(species, x, wood, darkWood) {
   }
   // Physical nameboards on the rear fence, not camera-facing floating labels.
   for (const px of [-1.4, 1.4]) box(.13, 2.8, .13, darkWood, px, 1.4, -1.7, group);
-  box(3.4, .92, .14, darkWood, 0, 2.35, -1.7, group);
+  const nameboard = box(3.4, .92, .14, darkWood, 0, 2.35, -1.7, group);
   const sign = makeSign(species.name, 3.3, .82, true);
   sign.position.set(x, 2.35, -8.32);
   const star = new THREE.Sprite(new THREE.SpriteMaterial({ map: starMap }));
   star.position.set(x, 1.05, -4.77); star.scale.set(.55, .55, 1); star.visible = false; scene.add(star);
-  return { name: species.name, x, z: -6.7, open: 0, target: 0, doors, star, group, sign };
+  return { name: species.name, x, z: -6.7, open: 0, target: 0, doors, star, group, sign, nameboard };
 }
 async function createActor(config) {
   const [still, walk] = await Promise.all([
@@ -211,6 +217,12 @@ async function createActor(config) {
     heading: random() * Math.PI * 2, turn: 1, moving: false, right: true, phase: random() };
 }
 function applyCamera() {
+  for (const cage of cages) {
+    cage.sign.material.map = mobileLayout.matches ? cage.sign.userData.mobileMap : cage.sign.userData.desktopMap;
+    cage.sign.material.needsUpdate = true;
+    cage.sign.scale.y = cage.nameboard.scale.y = mobileLayout.matches ? 1.2 : 1;
+  }
+  updateViewButton();
   const width = viewport.clientWidth, height = viewport.clientHeight, aspect = width / height;
   camera = new THREE.PerspectiveCamera(43, aspect, .1, 150);
   const distance = Math.max(1, 1.35 / aspect);
@@ -225,7 +237,8 @@ function applyCamera() {
 // Gentle framing only: never selects or points at an animal's correct cage.
 function updateFollowCamera(dt) {
   const frame = cameraFraming({ released, won, runTime, carrying,
-    player: player.group.position, reducedMotion });
+    player: player.group.position, reducedMotion, mobile: mobileLayout.matches,
+    overview, aspect: camera.aspect });
   const target = new THREE.Vector3(frame.x, .2, frame.z), targetZoom = frame.zoom;
   const blend = reducedMotion ? 1 : 1 - Math.exp(-dt * 1.5);
   followCenter.lerp(target, blend);
@@ -255,7 +268,7 @@ function sound(...names) {
 function reset() {
   cancelLasso(); facing.set(0, 0, -1);
   released = false; won = false; runTime = 0; carrying = null; clickTarget = null; keys.clear();
-  stopSound(); winTime = 0;
+  stopSound(); winTime = 0; overview = false; updateViewButton();
   document.querySelector('#victory').hidden = true;
   player.group.position.set(0, 0, 4.5); player.moving = false;
   cages = shuffled(cages);
@@ -454,9 +467,10 @@ function update(dt) {
   const home = animals.filter(a => a.state === 'home').length;
   document.querySelector('#score').textContent = !released ? 'Six animals, six homes' : `${home} / 6 safely home${carrying ? ` · carrying ${carrying.name}` : ''}`;
   if (released && !won && !carrying && !lasso && elapsed > flashUntil) setStatus(catchMode === 'lasso'
-    ? 'Aim the gold arrow with your movement, then press Space to throw. The arrow shows your range.'
+    ? `Aim the gold arrow with your movement, then ${mobileLayout.matches ? 'tap Throw lasso' : 'press Space'} to throw. The arrow shows your range.`
     : 'Touch an animal, then walk into its named gate.');
   document.querySelector('#throw').disabled = !released || won || !!carrying || !!lasso || runTime < SCATTER_SECONDS;
+  document.querySelector('#view-toggle').disabled = !released || won;
   if (won && elapsed - winTime > 1.2) document.querySelector('#victory').hidden = false;
 }
 function animate(now) {
@@ -532,6 +546,16 @@ window.addEventListener('keyup', event => {
 window.addEventListener('blur', () => keys.clear());
 document.addEventListener('visibilitychange', () => { if (document.hidden) { keys.clear(); stopSound(); } });
 function focusGame() { if (ready) renderer.domElement.focus({ preventScroll: true }); }
+function updateViewButton() {
+  const button = document.querySelector('#view-toggle');
+  button.hidden = !mobileLayout.matches;
+  button.textContent = overview ? 'Follow Spiro' : 'View whole park';
+  button.setAttribute('aria-pressed', String(overview));
+}
+document.querySelector('#view-toggle').onclick = () => {
+  overview = !overview; updateViewButton(); focusGame();
+};
+mobileLayout.addEventListener('change', () => { if (ready) applyCamera(); });
 document.querySelector('#release').onclick = () => { release(); focusGame(); };
 document.querySelector('#reset').onclick = () => { reset(); focusGame(); };
 document.querySelector('#again').onclick = () => { reset(); release(); focusGame(); };

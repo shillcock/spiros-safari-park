@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spiro’s Safari Park: 3D</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="style.css?v=mobile-header-4">
+  <link rel="stylesheet" href="style.css?v=mobile-camera-5">
 </head>
 <body>
   <header class="site-header">
@@ -32,13 +32,17 @@
   <section id="viewport" aria-label="3D safari park">
     <div id="loading" role="status">Building the little park…</div>
     <div id="score">Six animals, six homes</div>
-    <button id="throw" disabled>Throw lasso (Space)</button>
+    <div class="scene-actions">
+      <button id="view-toggle" hidden disabled aria-pressed="false" aria-label="Show whole park instead of following Spiro">View whole park</button>
+      <button id="throw" disabled>Throw lasso <span class="keyboard-hint">(Space)</span></button>
+    </div>
     <div id="victory" hidden><strong>You’re a Safari Park Ranger!</strong><span>All six animals are home safe.</span><button id="again">Play again</button></div>
   </section>
   <p id="status" role="status">Loading the park…</p>
   <p class="instructions"><strong>Arrow keys / WASD</strong> to walk, or <strong>click/tap the ground</strong>.
     <span id="catch-help"><strong>Space</strong> throws along the gold arrow. Move to aim it.</span>
-    Carry each animal into its named cage. Read the signs to find the right home!</p>
+    Carry each animal into its named cage. Read the signs to find the right home!
+    <span class="mobile-camera-help">The camera follows you up close. Use View whole park to look around, then Follow Spiro to return.</span></p>
   <footer>Original game idea, drawings, and sound effects by Spiro JJ Pettas, age 7.</footer>
 </main>
 <script type="module" src="game.js"></script>

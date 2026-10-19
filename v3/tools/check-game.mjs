@@ -28,6 +28,15 @@ try {
           clickTarget = new THREE.Vector3(cage.x, 0, -5.08);
         },
         step(n) { for (let i=0;i<n;i++) update(.05); },
+        pose(x, z) { player.group.position.set(x, 0, z); clickTarget = null; },
+        settleCamera() { for (let i=0;i<100;i++) updateFollowCamera(.05); },
+        projection() {
+          const center = player.group.position.clone(); center.y = 1.5; center.project(camera);
+          const nearest = [...cages].sort((a,b) => Math.abs(a.x-player.group.position.x)-Math.abs(b.x-player.group.position.x))[0];
+          const sign = nearest.sign.position.clone().project(camera);
+          return { player: {x:center.x,y:center.y}, sign:{x:sign.x,y:sign.y},
+            signScale:nearest.sign.scale.y, zoom:followZoom };
+        },
         layout() { return cages.map(c => ({ name: c.name, x: c.x, signX: c.sign.position.x,
           groupX: c.group.position.x, starX: c.star.position.x,
           animalX: animals.find(a => a.name === c.name).group.position.x })); },
@@ -40,7 +49,7 @@ try {
   for (const style of ['toys', 'paper']) for (const mode of ['lasso', 'touch']) {
     await page.goto(`${base}/v3/?animals=${style}&catch=${mode}&variant=A&camera=manual`);
     await page.waitForSelector('#loading', { state: 'hidden' });
-    assert.equal(await page.locator('button[aria-pressed]').count(), 2);
+    assert.equal(await page.locator('.toolbar button[aria-pressed]').count(), 2);
     assert.equal(await page.locator('#state, #zoom, #carry, #previous, #next, #camera-mode').count(), 0);
     assert.equal(new URL(page.url()).searchParams.has('variant'), false);
     const layout = await page.evaluate(() => gameCheck.layout());
@@ -100,6 +109,28 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(200);
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  assert.equal(await page.locator('#view-toggle').isVisible(), true);
+  await page.click('#release');
+  await page.evaluate(() => { gameCheck.prepare('beaver'); gameCheck.step(2); gameCheck.settleCamera(); });
+  assert.equal((await page.evaluate(() => gameCheck.state())).carrying, 'beaver');
+  assert.ok((await page.evaluate(() => gameCheck.projection())).zoom > 2.2, 'carrying remains close on phones');
+  for (const [x,z] of [[-12,8],[12,8],[-10,-4.5],[10,-4.5]]) {
+    const projected = await page.evaluate(([x,z]) => { gameCheck.pose(x,z); gameCheck.settleCamera(); return gameCheck.projection(); }, [x,z]);
+    assert.ok(Math.abs(projected.player.x) < .85 && Math.abs(projected.player.y) < .7, 'Spiro stays on screen near park edges');
+    if (z < 0) assert.ok(Math.abs(projected.sign.x) < .9 && Math.abs(projected.sign.y) < .9, 'nearby sign stays in view');
+    assert.equal(projected.signScale, 1.2);
+  }
+  await page.click('#view-toggle');
+  await page.evaluate(() => gameCheck.settleCamera());
+  assert.ok((await page.evaluate(() => gameCheck.projection())).zoom < 1.01);
+  assert.equal(await page.locator('#view-toggle').textContent(), 'Follow Spiro');
+  await page.click('#view-toggle'); await page.evaluate(() => gameCheck.settleCamera());
+  assert.ok((await page.evaluate(() => gameCheck.projection())).zoom > 2.2);
+  await page.click('#reset'); await page.evaluate(() => gameCheck.settleCamera());
+  assert.ok((await page.evaluate(() => gameCheck.projection())).zoom < 1.01);
+  await page.setViewportSize({ width: 1280, height: 800 }); await page.waitForTimeout(200);
+  assert.equal(await page.locator('#view-toggle').isVisible(), false);
+  assert.equal((await page.evaluate(() => gameCheck.projection())).signScale, 1);
   assert.deepEqual(errors, []);
-  console.log('PASS: mid-cast mode switch, URL reload, mobile layout, no browser errors');
+  console.log('PASS: mid-cast mode switch, URL reload, mobile close camera, park edges, overview/replay, desktop resize, no browser errors');
 } finally { await browser.close(); }

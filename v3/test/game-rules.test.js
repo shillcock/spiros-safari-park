@@ -33,6 +33,22 @@ test('stationary loop and reversed casts remain well defined', () => {
   assert.equal(findLassoCatch([target], { x: 0, z: 0 }, { x: 0, z: 0 }), target);
   assert.equal(findLassoCatch([animal(0, -2)], { x: 0, z: 0 }, { x: 0, z: -4 })?.state, 'free');
 });
+test('phone framing stays close while carrying and offers an explicit overview', () => {
+  const state = { released: true, won: false, runTime: 4, carrying: false,
+    player: { x: 10, z: -4 }, reducedMotion: false, mobile: true, aspect: .8 };
+  const frame = cameraFraming(state);
+  assert.equal(frame.zoom, 2.25);
+  assert.equal(frame.x, 9.5);
+  assert.ok(frame.z < state.player.z, 'look toward nearby cage signs');
+  assert.deepEqual(cameraFraming({ ...state, carrying: true }), frame, 'no destination-dependent hint or wide carry view');
+  assert.deepEqual(cameraFraming({ ...state, overview: true }), { x: 0, z: -.5, zoom: 1 });
+  for (const change of [{ released: false }, { runTime: 1 }, { won: true }]) {
+    assert.equal(cameraFraming({ ...state, ...change }).zoom, 1);
+  }
+  assert.equal(cameraFraming({ ...state, aspect: 1.6 }).zoom, 1.55);
+  assert.deepEqual(cameraFraming({ ...state, reducedMotion: true }), frame, 'essential phone tracking remains; renderer skips transition animation');
+});
+
 test('camera widens for carrying, respects bounds, and rests for victory or reduced motion', () => {
   const state = { released: true, won: false, runTime: 4, carrying: false, player: { x: 12, z: 8 }, reducedMotion: false };
   assert.deepEqual(cameraFraming(state), { x: 5, z: 3, zoom: 1.35 });

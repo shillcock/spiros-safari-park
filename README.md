@@ -37,7 +37,8 @@ replays. Cages stay in place for the round, so players must read the names inste
 of memorizing locations. Original keeps its fixed layout.
 
 The 3D edition is a separate wooden park with a fixed perspective camera and
-gentle automatic zoom. Its two options are **Lasso / By hand** catching and
+gentle automatic zoom. Phones get a closer follow view, larger cage lettering,
+and a **View whole park / Follow Spiro** camera shortcut. Its two options are **Lasso / By hand** catching and
 **3D / Paper** animals. Space throws along a visible aiming arrow; arrows/WASD
 or click/tap the ground move Spiro. Click Release to begin, then return all six
 to their named cages. It includes the original recordings and its own replay.

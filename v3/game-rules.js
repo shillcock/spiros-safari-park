@@ -35,8 +35,19 @@ export function findLassoCatch(animals, from, to) {
   return first;
 }
 
-export function cameraFraming({ released, won, runTime, carrying, player, reducedMotion }) {
-  if (!released || won || runTime <= SCATTER_SECONDS || reducedMotion) return { x: 0, z: -.5, zoom: 1 };
+export function cameraFraming({ released, won, runTime, carrying, player, reducedMotion,
+  mobile = false, overview = false, aspect = 1 }) {
+  const wide = { x: 0, z: -.5, zoom: 1 };
+  if (!released || won || runTime <= SCATTER_SECONDS) return wide;
+  if (mobile) {
+    if (overview) return wide;
+    // Follow the player, never a chosen animal or destination. Near any cage,
+    // look slightly ahead so its rear sign and Spiro fit in the same view.
+    const approach = Math.max(0, Math.min(1, (-player.z - .5) / 3));
+    return { x: player.x * .95, z: player.z - .4 - approach * 1.8,
+      zoom: aspect < 1.15 ? 2.25 : 1.55 };
+  }
+  if (reducedMotion) return wide;
   if (carrying) return { x: player.x * .18, z: -1.2, zoom: 1.08 };
   return { x: Math.max(-5, Math.min(5, player.x * .55)),
     z: Math.max(-2, Math.min(3, player.z * .45)), zoom: 1.35 };
