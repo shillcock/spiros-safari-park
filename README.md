@@ -71,7 +71,16 @@ just to accommodate Enhanced development.
 
 ## Assets and publishing
 
-Publish the root redirect and both edition directories on any static website.
+Live site: **https://shillcock.github.io/spiros-safari-park/**
+
+GitHub Pages deploys automatically on pushes to `main` via
+`.github/workflows/pages.yml` (also manually runnable in Actions). The workflow
+runs the tests, then publishes only the root redirect and each edition's runtime
+HTML, CSS, JavaScript, and assets. The archive, recovery tools, tests, and other
+repository files are not included in the Pages artifact. The GitHub repository
+itself is public, so those files remain accessible there.
+
+You can also publish the root redirect and both edition directories on any static website.
 Neither edition depends on `CD_ROM/`, `recovery/`, or `archive/`. The original
 CD-ROM directory is preserved in `archive/spiros-safari-park-original-cd-2004.zip`
 with a checksum and restoration instructions in `archive/README.md`. The loose

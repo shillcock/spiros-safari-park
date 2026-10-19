@@ -1,0 +1,48 @@
+name: Deploy game to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test both editions and verify Original preservation
+        run: npm test
+      - name: Stage playable files only
+        shell: bash
+        run: |
+          mkdir -p _site/v1 _site/v2
+          cp index.html _site/
+          for version in v1 v2; do
+            cp "$version"/{index.html,style.css,game.js,game-model.js} "_site/$version/"
+            cp -R "$version/assets" "_site/$version/"
+          done
+          cp v2/presentation.js _site/v2/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
